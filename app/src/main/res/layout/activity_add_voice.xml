@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.addVoiceActivity">
+
+    <EditText
+        android:id="@+id/meaning_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="81dp"
+        android:ems="10"
+        android:hint="@string/str_Meaning_Edt_Hint"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="75dp" />
+
+    <Button
+        android:id="@+id/recording_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/meaning_Edt"
+        android:layout_centerVertical="true"
+        android:text="@string/str_Recording_Btn" />
+
+    <Button
+        android:id="@+id/Save_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recording_Btn"
+        android:layout_alignEnd="@+id/meaning_Edt"
+        android:text="@string/str_Save_Btn" />
+</RelativeLayout>
