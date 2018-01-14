@@ -23,7 +23,13 @@
         </activity>
         <activity android:name=".registeredActivity" />
         <activity android:name=".voiceActivity" />
+        <activity android:name=".personalInformationActivity"></activity>
+        <activity android:name=".emergencyContactActivity"></activity>
+        <activity android:name=".addVoiceActivity"></activity>
         <activity android:name=".mapViewActivity"></activity>
+        <activity android:name=".addEmergencyContactActivity"></activity>
+        <activity android:name=".voiceSettingActivity"></activity>
+
     </application>
 
 </manifest>

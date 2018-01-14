@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/personalInformation_Btn"
-        android:onClick="emergencyContactOnClike"
+        android:onClick="emergencyContactOnClick"
         android:text="@string/str_EmergencyContact_Btn"
         tools:layout_editor_absoluteX="195dp"
         tools:layout_editor_absoluteY="0dp" />

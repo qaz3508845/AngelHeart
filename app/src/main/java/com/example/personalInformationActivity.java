@@ -13,9 +13,30 @@ public class personalInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_information);
     }
 
-    public void emergencyContactOnClike(View view){
+    public void voiceOnClick(View view) {
         Intent intent = new Intent();
-        intent.setClass(personalInformationActivity.this,emergencyContactActivity.class);
+        intent.setClass(personalInformationActivity.this, voiceActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void personalInformationOnClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(personalInformationActivity.this, personalInformationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void emergencyContactOnClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(personalInformationActivity.this, emergencyContactActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void mapViewOnClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(personalInformationActivity.this, mapViewActivity.class);
         startActivity(intent);
         finish();
     }

@@ -13,31 +13,34 @@ public class voiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_voice);
 
 
-
-
     }
+
     public void voiceOnClick(View view) {
-        Intent intent=new Intent();
-        intent.setClass(voiceActivity.this,voiceActivity.class);
+        Intent intent = new Intent();
+        intent.setClass(voiceActivity.this, voiceActivity.class);
         startActivity(intent);
+        finish();
     }
+
     public void personalInformationOnClick(View view) {
-        Intent intent=new Intent();
-        intent.setClass(voiceActivity.this,personalInformationActivity.class);
+        Intent intent = new Intent();
+        intent.setClass(voiceActivity.this, personalInformationActivity.class);
         startActivity(intent);
-    }
-    public void emergencyContactOnClike(View view) {
-        Intent intent=new Intent();
-        intent.setClass(voiceActivity.this,emergencyContactActivity.class);
-        startActivity(intent);
+        finish();
+
     }
 
-
-
+    public void emergencyContactOnClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(voiceActivity.this, emergencyContactActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     public void mapViewOnClick(View view) {
-        Intent intent=new Intent();
-        intent.setClass(voiceActivity.this,mapView.class);
+        Intent intent = new Intent();
+        intent.setClass(voiceActivity.this, mapViewActivity.class);
         startActivity(intent);
+        finish();
     }
 }
