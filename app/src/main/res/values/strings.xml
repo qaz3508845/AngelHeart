@@ -14,5 +14,33 @@
     <string name="str_Registered_Btn">註冊</string>
     <string name="str_Login_Btn">登入</string>
 
+    //個人資料頁面
+    <string name="str_Voice_Btn">語音辨識</string>
+    <string name="str_PersonalInformation_Btn">個人資料</string>
+    <string name="str_EmergencyContact_Btn">緊急連絡人</string>
+    <string name="str_MapView_Btn">地圖</string>
+
+    <string name="str_Name_Txv">姓名</string>
+    <string name="str_Name2_Txv">[姓名]</string>
+    <string name="str_phone_Txv">電話</string>
+    <string name="str_phone2_Txv">[電話]</string>
+    <string name="str_address_Txv">地址</string>
+    <string name="str_address2_Txv">[地址]</string>
+
+
+    <string name="str_AddContact_Btn">新增聯絡人</string>
+
+
+    <string name="str_Name_Btn_Hint">輸入姓名</string>
+    <string name="str_Phone_Btn_Hint">輸入電話</string>
+    <string name="str_Address_Edt_Hint">輸入稱謂</string>
+    <string name="str_Add_Btn">新增</string>
+    <string name="str_cancel_Btn">取消</string>
+
+
+    <string name="str_Save_Btn">儲存</string>
+    <string name="str_Recording_Btn">錄音</string>
+    <string name="str_Meaning_Edt_Hint">輸入語意</string>
+
 
 </resources>
