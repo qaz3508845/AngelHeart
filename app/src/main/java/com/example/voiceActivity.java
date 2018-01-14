@@ -2,6 +2,7 @@ package com.example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class voiceActivity extends AppCompatActivity {
 
@@ -13,6 +14,8 @@ public class voiceActivity extends AppCompatActivity {
 
 
 
+    }
 
+    public void emergencyContactOnClike(View view) {
     }
 }

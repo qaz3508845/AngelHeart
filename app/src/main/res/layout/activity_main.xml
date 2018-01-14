@@ -14,6 +14,7 @@
         android:layout_alignBottom="@+id/registered_Btn"
         android:layout_alignEnd="@+id/password_Edt"
         android:layout_marginEnd="45dp"
+        android:onClick="loginOnClick"
         android:text="@string/str_Login_Btn"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="236dp"

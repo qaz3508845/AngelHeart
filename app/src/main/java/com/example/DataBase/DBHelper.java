@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + registered_TABLE_id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
             + registered_TABLE_account + " TEXT, "
             + registered_TABLE_password + " TEXT, "
-            + registered_TABLE_phone + " TEXT, "
+            + registered_TABLE_phone + " TEXT "
             +");";
 
     @Override
