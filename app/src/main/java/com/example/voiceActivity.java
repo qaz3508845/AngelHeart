@@ -9,7 +9,7 @@ public class voiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voice);
-        //ssss
+
 
 
 
