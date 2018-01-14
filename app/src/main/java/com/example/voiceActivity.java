@@ -11,5 +11,7 @@ public class voiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_voice);
         //ssss
         //TESt
+
+
     }
 }
