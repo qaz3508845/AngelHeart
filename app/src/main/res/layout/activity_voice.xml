@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.voiceActivity">
+
     <Button
         android:id="@+id/voice_Btn"
         android:layout_width="wrap_content"
@@ -12,6 +13,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
+        android:onClick="voiceOnClick"
         android:text="@string/str_Voice_Btn" />
 
     <Button
@@ -20,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/voice_Btn"
+        android:onClick="personalInformationOnClick"
         android:text="@string/str_PersonalInformation_Btn"
         tools:layout_editor_absoluteX="97dp"
         tools:layout_editor_absoluteY="0dp" />
@@ -41,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/emergencyContact_Btn"
+        android:onClick="mapViewOnClick"
         android:text="@string/str_MapView_Btn"
         tools:layout_editor_absoluteX="289dp"
         tools:layout_editor_absoluteY="0dp" />

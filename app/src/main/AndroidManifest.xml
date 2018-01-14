@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".registeredActivity" />
-        <activity android:name=".voiceActivity"></activity>
+        <activity android:name=".voiceActivity" />
+        <activity android:name=".mapViewActivity"></activity>
     </application>
 
 </manifest>
