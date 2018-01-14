@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.registeredActivity">
+
+
+    <Button
+        android:id="@+id/registered_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/phoneEdt"
+        android:layout_below="@+id/phoneEdt"
+        android:layout_marginEnd="33dp"
+        android:layout_marginTop="36dp"
+        android:onClick="registeredBtnClick"
+        android:text="註冊"
+         />
+
+    <TextView
+        android:id="@+id/accountTxv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="33dp"
+        android:text="@string/str_Account_Txv" />
+
+    <TextView
+        android:id="@+id/password_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/accountTxv"
+        android:layout_below="@+id/accountEdt"
+        android:layout_marginTop="23dp"
+        android:text="@string/str_Password_Txv" />
+
+    <EditText
+        android:id="@+id/accountEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/accountTxv"
+        android:layout_alignBottom="@+id/accountTxv"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:ems="10"
+        android:hint="@string/str_Account_Hint"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/passwordEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/password_Txv"
+        android:layout_alignBottom="@+id/password_Txv"
+        android:layout_alignStart="@+id/accountEdt"
+        android:ems="10"
+        android:hint="@string/str_Password_Hint"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/phoneTxv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/phoneEdt"
+        android:layout_alignBottom="@+id/phoneEdt"
+        android:layout_alignStart="@+id/password_Txv"
+        android:text="@string/str_Phone_Txv" />
+
+    <EditText
+        android:id="@+id/phoneEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/passwordEdt"
+        android:layout_below="@+id/passwordEdt"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="@string/str_Phone_Hint"
+        android:inputType="textPersonName" />
+</RelativeLayout>

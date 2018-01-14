@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.MainActivity">
+
+    <Button
+        android:id="@+id/login_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/registered_Btn"
+        android:layout_alignBottom="@+id/registered_Btn"
+        android:layout_alignEnd="@+id/password_Edt"
+        android:layout_marginEnd="45dp"
+        android:text="@string/str_Login_Btn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <Button
+        android:id="@+id/registered_Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_Edt"
+        android:layout_marginTop="78dp"
+        android:layout_toEndOf="@+id/account_Txv"
+        android:onClick="registerOnClick"
+        android:text="@string/str_Registered_Btn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <TextView
+        android:id="@+id/account_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/str_Account_Txv"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <TextView
+        android:id="@+id/password_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/password_Edt"
+        android:layout_alignBottom="@+id/password_Edt"
+        android:layout_alignStart="@+id/account_Txv"
+        android:text="@string/str_Password_Txv"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <EditText
+        android:id="@+id/account_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/account_Txv"
+        android:layout_alignBottom="@+id/account_Txv"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="34dp"
+        android:ems="10"
+        android:hint="@string/str_Account_Edt_Hint"
+        android:inputType="textPersonName"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <EditText
+        android:id="@+id/password_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/account_Edt"
+        android:layout_below="@+id/account_Edt"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:hint="@string/str_Password_Edt_Hint"
+        android:inputType="textPersonName"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="95dp" />
+</RelativeLayout>

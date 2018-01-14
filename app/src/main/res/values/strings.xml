@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">天使之音</string>
+    <string name="str_Account_Txv">帳號:</string>
+    <string name="str_Password_Txv">密碼:</string>
+
+    <string name="str_Phone_Txv">手機:</string>
+    <string name="str_Account_Hint">請輸入註冊帳號</string>
+    <string name="str_Password_Hint">請輸入註冊密碼</string>
+    <string name="str_Phone_Hint">請輸入註冊手機</string>
+
+
+    <string name="str_Account_Edt_Hint">輸入帳號</string>
+    <string name="str_Password_Edt_Hint">輸入密碼</string>
+    <string name="str_Registered_Btn">註冊</string>
+    <string name="str_Login_Btn">登入</string>
+
+
+</resources>
