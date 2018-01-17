@@ -2,6 +2,7 @@ package com.example.DataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -54,4 +55,13 @@ public class registeredDAO {
         }
 
     }
+
+    public Cursor getAllData(){
+        Cursor cursor= database.query(DBHelper.registered_TABLE,new String[]{DBHelper.registered_TABLE_id,
+        DBHelper.registered_TABLE_account,DBHelper.registered_TABLE_password,DBHelper.registered_TABLE_phone}
+        ,null,null,null,null,null);
+        return cursor;
+    }
+
+
 }
