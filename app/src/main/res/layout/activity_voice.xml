@@ -68,20 +68,21 @@
         android:text="TextView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/show_Start_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/voice_Btn"
         android:layout_marginBottom="44dp"
         android:layout_marginStart="29dp"
+        android:onClick="showStartOnClick"
         android:text="Button" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignTop="@+id/show_Start_Btn"
         android:layout_marginStart="24dp"
         android:layout_toEndOf="@+id/textView"
         android:text="Button" />

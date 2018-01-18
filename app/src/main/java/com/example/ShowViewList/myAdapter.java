@@ -1,12 +1,14 @@
-package com.example;
+package com.example.ShowViewList;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.R;
+import com.example.ShowViewList.ShowItem;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ public class myAdapter extends BaseAdapter{
     private ArrayList<ShowItem> data;
 
     private LayoutInflater showInflater;
-    private Context mContext;
+
 
     public myAdapter(Context mContext,ArrayList<ShowItem> data) {
         this.data=data;
@@ -56,7 +58,7 @@ public class myAdapter extends BaseAdapter{
             holder=(ViewHolder)view.getTag();
         }
 
-        holder.id_Txv.setText(showItem.getId());
+        holder.id_Txv.setText(showItem.getId()+"");
         holder.account_Txv.setText(showItem.getAccount());
         holder.password_Txv.setText(showItem.getPassword());
         holder.phone_Txv.setText(showItem.getPhone());

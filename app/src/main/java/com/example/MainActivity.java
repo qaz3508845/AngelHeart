@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginOnClick(View view) {
+
+
+
+
         Intent intent=new Intent();
         intent.setClass(MainActivity.this, voiceActivity.class);
         startActivity(intent);

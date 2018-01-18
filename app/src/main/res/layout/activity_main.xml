@@ -8,27 +8,36 @@
 
     <Button
         android:id="@+id/login_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/registered_Btn"
-        android:layout_alignBottom="@+id/registered_Btn"
-        android:layout_alignEnd="@+id/password_Edt"
-        android:layout_marginEnd="45dp"
+        android:layout_width="189dp"
+        android:layout_height="50dp"
+
+
+        android:layout_alignStart="@+id/registered_Btn"
+        android:layout_centerVertical="true"
+        android:background="@drawable/allbutton"
         android:onClick="loginOnClick"
+        android:shadowColor="#2A11A8"
+        android:shadowRadius="25"
         android:text="@string/str_Login_Btn"
+        android:textColor="#FFFFFF"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="236dp"
         tools:layout_editor_absoluteY="190dp" />
 
     <Button
         android:id="@+id/registered_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password_Edt"
-        android:layout_marginTop="78dp"
-        android:layout_toEndOf="@+id/account_Txv"
+        android:layout_width="189dp"
+        android:layout_height="50dp"
+
+        android:layout_below="@+id/login_Btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/allbutton"
         android:onClick="registerOnClick"
+        android:shadowColor="#2A11A8"
+        android:shadowRadius="25"
         android:text="@string/str_Registered_Btn"
+        android:textColor="#FFFFFF"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="57dp"
         tools:layout_editor_absoluteY="190dp" />
@@ -86,4 +95,13 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="95dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/account_Edt"
+        android:layout_marginBottom="14dp"
+        android:layout_toEndOf="@+id/account_Txv"
+        android:text="@string/str_Login_Btn" />
 </RelativeLayout>

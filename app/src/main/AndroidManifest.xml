@@ -29,7 +29,7 @@
         <activity android:name=".mapViewActivity" />
         <activity android:name=".addEmergencyContactActivity" />
         <activity android:name=".voiceSettingActivity" />
-        <activity android:name=".Show"></activity>
+        <activity android:name=".ShowViewList.Show"></activity>
     </application>
 
 </manifest>

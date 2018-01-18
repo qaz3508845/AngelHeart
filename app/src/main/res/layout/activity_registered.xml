@@ -9,15 +9,19 @@
 
     <Button
         android:id="@+id/registered_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/phone_Edt"
+        android:layout_width="189dp"
+        android:layout_height="50dp"
+
         android:layout_below="@+id/phone_Edt"
-        android:layout_marginEnd="33dp"
-        android:layout_marginTop="36dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+
+        android:background="@drawable/allbutton"
         android:onClick="registeredBtnClick"
-        android:text="註冊"
-         />
+        android:shadowColor="#2A11A8"
+        android:shadowRadius="25"
+        android:textColor="#FFFFFF"
+        android:text="註冊" />
 
     <TextView
         android:id="@+id/account_Txv"
@@ -59,7 +63,7 @@
         android:layout_alignStart="@+id/account_Edt"
         android:ems="10"
         android:hint="@string/str_Password_Hint"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/phone_Txv"
@@ -75,9 +79,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/password_Edt"
-        android:layout_below="@+id/password_Edt"
-        android:layout_marginTop="11dp"
+        android:layout_below="@+id/confirmPassword_Edt"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:hint="@string/str_Phone_Hint"
-        android:inputType="textPersonName" />
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/login_Btn"
+        android:layout_width="189dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/registered_Btn"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/confirmPassword_Txv"
+
+
+        android:background="@drawable/allbutton"
+        android:onClick="loginBtnOnClick"
+        android:shadowColor="#2A11A8"
+        android:shadowRadius="25"
+        android:textColor="#FFFFFF"
+
+        android:text="@string/str_Login_Btn" />
+
+    <TextView
+        android:id="@+id/confirmPassword_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/password_Txv"
+        android:layout_below="@+id/password_Edt"
+        android:layout_marginTop="22dp"
+        android:text="@string/str_ConfirmPassword_Txv" />
+
+    <EditText
+        android:id="@+id/confirmPassword_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/confirmPassword_Txv"
+        android:layout_alignBottom="@+id/confirmPassword_Txv"
+        android:layout_alignStart="@+id/password_Edt"
+        android:ems="10"
+        android:hint="@string/str_ConfirmPassword_Hint"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/account_Txv"
+        android:text="@string/str_Registered_Btn" />
+
 </RelativeLayout>

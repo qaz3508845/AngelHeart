@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.ShowViewList.Show;
+
 public class voiceActivity extends AppCompatActivity {
 
     @Override
@@ -42,5 +44,11 @@ public class voiceActivity extends AppCompatActivity {
         intent.setClass(voiceActivity.this, mapViewActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void showStartOnClick(View view) {
+        Intent intent=new Intent();
+        intent.setClass(voiceActivity.this,Show.class);
+        startActivity(intent);
     }
 }
