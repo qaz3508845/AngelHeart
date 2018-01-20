@@ -8,11 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.DataBase.registeredDAO;
+import com.example.DataBase.personalInformationDAO;
+
 
 public class registeredActivity extends AppCompatActivity {
 
-    registeredDAO db;
+    personalInformationDAO db;
 
     EditText account_Edt;
     EditText password_Edt;
@@ -24,7 +25,7 @@ public class registeredActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered);
-        db=new registeredDAO(registeredActivity.this);
+        db=new personalInformationDAO(registeredActivity.this);
     }
 
     public void registeredBtnClick(View view){
@@ -48,18 +49,18 @@ public class registeredActivity extends AppCompatActivity {
             String account=account_Edt.getText().toString();
             String password=password_Edt.getText().toString();
             String phone=phone_Edt.getText().toString();
-            boolean boo=db.insertRegistered(account,password,phone);
-            if(boo){
-                Toast.makeText(registeredActivity.this,"創建成功",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent();
-                intent.setClass(registeredActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
-
-            }else{
-                Toast.makeText(registeredActivity.this,"創建失敗",Toast.LENGTH_LONG).show();
-
-            }
+//            boolean boo=db.insertRegistered(account,password,phone);
+//            if(boo){
+//                Toast.makeText(registeredActivity.this,"創建成功",Toast.LENGTH_LONG).show();
+//                Intent intent=new Intent();
+//                intent.setClass(registeredActivity.this,MainActivity.class);
+//                startActivity(intent);
+//                finish();
+//
+//            }else{
+//                Toast.makeText(registeredActivity.this,"創建失敗",Toast.LENGTH_LONG).show();
+//
+//            }
         }
 
 //        Intent intent=new Intent();
