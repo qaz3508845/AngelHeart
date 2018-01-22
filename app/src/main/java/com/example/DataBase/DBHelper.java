@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TAG="DBHelper";//此class名稱 用於顯示TAG
 
     private static final String DATABASE_NAME="AngelHeart_DB";
-    private static final int DATABASE_VERSION=1;
+    private static final int DATABASE_VERSION=3;
 
     public static final String personalInformation_TABLE="personalInformation";//資料表名稱
     public static final String personalInformation_TABLE_id="p_id";
@@ -33,14 +33,15 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     private static final String SQL_CREATE_TABLE_personalInformation="CREATE TABLE " + personalInformation_TABLE + "("
-            + personalInformation_TABLE_id + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            + personalInformation_TABLE_name + " TEXT, "
+            + personalInformation_TABLE_id + " INTEGER,"
+            + personalInformation_TABLE_name + " TEXT,   "
             + personalInformation_TABLE_phone + " TEXT, "
-            + personalInformation_TABLE_account + " TEXT "
-            + personalInformation_TABLE_password + " TEXT "
-            + personalInformation_TABLE_address + " TEXT "
+            + personalInformation_TABLE_account + " TEXT, "
+            + personalInformation_TABLE_password + " TEXT, "
+            + personalInformation_TABLE_address + " TEXT, "
             + personalInformation_TABLE_datetime + " TEXT "
             +");";
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -54,4 +55,6 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ personalInformation_TABLE);
         onCreate(sqLiteDatabase);
     }
+    public static final String SQL_DROP_TABLE_personalInformation="DROP TABLE "+personalInformation_TABLE;
+
 }

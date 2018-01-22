@@ -13,6 +13,19 @@ public class ShowItem {
     String p_address;
     String p_datetime;
 
+    public ShowItem() {
+    }
+
+    public ShowItem(int p_id, String p_name, String p_phone, String p_account, String p_password, String p_address, String p_datetime) {
+        this.p_id = p_id;
+        this.p_name = p_name;
+        this.p_phone = p_phone;
+        this.p_account = p_account;
+        this.p_password = p_password;
+        this.p_address = p_address;
+        this.p_datetime = p_datetime;
+    }
+
     public int getP_id() {
         return p_id;
     }

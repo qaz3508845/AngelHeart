@@ -20,6 +20,9 @@ public class registeredActivity extends AppCompatActivity {
     EditText phone_Edt;
     Button registered_Btn;
     EditText confirmPassword_Edt;
+    EditText address_Edt;
+    EditText name_Edt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class registeredActivity extends AppCompatActivity {
         password_Edt=(EditText)findViewById(R.id.password_Edt);
         phone_Edt=(EditText)findViewById(R.id.phone_Edt);
         confirmPassword_Edt=(EditText)findViewById(R.id.confirmPassword_Edt);
+        address_Edt=(EditText)findViewById(R.id.address_Edt);
+        name_Edt=(EditText)findViewById(R.id.name_Edt);
 
         if(account_Edt.getText().toString().equals("")||
                 password_Edt.getText().toString().equals("")||
@@ -49,14 +54,17 @@ public class registeredActivity extends AppCompatActivity {
             String account=account_Edt.getText().toString();
             String password=password_Edt.getText().toString();
             String phone=phone_Edt.getText().toString();
-//            boolean boo=db.insertRegistered(account,password,phone);
+            String address=address_Edt.getText().toString();
+            String name=name_Edt.getText().toString();
+//            boolean boo=db.insertPersonalInformation(account,password,phone);
+            db.insertPersonalInformation(name,phone,account,password,address);
 //            if(boo){
-//                Toast.makeText(registeredActivity.this,"創建成功",Toast.LENGTH_LONG).show();
-//                Intent intent=new Intent();
-//                intent.setClass(registeredActivity.this,MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//
+                Toast.makeText(registeredActivity.this,"創建成功",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent();
+                intent.setClass(registeredActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+
 //            }else{
 //                Toast.makeText(registeredActivity.this,"創建失敗",Toast.LENGTH_LONG).show();
 //
