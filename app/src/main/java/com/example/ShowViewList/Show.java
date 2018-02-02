@@ -3,6 +3,7 @@ package com.example.ShowViewList;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.DataBase.DBHelper;

@@ -20,7 +20,26 @@
         android:shadowRadius="25"
         android:text="註冊"
         android:textColor="#FFFFFF" />
+    <TextView
+        android:id="@+id/name_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name_Edt"
+        android:layout_alignBottom="@+id/name_Edt"
+        android:layout_alignStart="@+id/account_Txv"
+        android:text="@string/str_Name_Txv" />
 
+    <EditText
+        android:id="@+id/name_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/account_Edt"
+        android:layout_below="@+id/textView3"
+        android:ems="10"
+        android:hint="@string/str_Name_Btn_Hint"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="textPersonName" />
     <TextView
         android:id="@+id/account_Txv"
         android:layout_width="wrap_content"
@@ -128,24 +147,7 @@
         android:layout_toEndOf="@+id/account_Txv"
         android:text="@string/str_Registered_Btn" />
 
-    <TextView
-        android:id="@+id/name_Txv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/name_Edt"
-        android:layout_alignBottom="@+id/name_Edt"
-        android:layout_alignStart="@+id/account_Txv"
-        android:text="@string/str_Name_Txv" />
 
-    <EditText
-        android:id="@+id/name_Edt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/account_Edt"
-        android:layout_below="@+id/textView3"
-        android:ems="10"
-        android:hint="@string/str_Name_Btn_Hint"
-        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/address_Txv"

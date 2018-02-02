@@ -51,4 +51,13 @@ public class voiceActivity extends AppCompatActivity {
         intent.setClass(voiceActivity.this,Show.class);
         startActivity(intent);
     }
+
+    public void settingOnClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(voiceActivity.this, voiceSettingActivity.class);
+        startActivity(intent);
+
+
+
+    }
 }

@@ -2,9 +2,7 @@
     <string name="app_name">天使之音</string>
     <string name="str_Account_Txv">帳號:</string>
     <string name="str_Password_Txv">密碼:</string>
-    <string name="str_address_Hintaaa">請輸入地址</string>
-
-
+    <string name="str_address_Hint">請輸入地址</string>
 
 
     <string name="str_Phone_Txv">手機:</string>
@@ -48,7 +46,7 @@
     <string name="str_Save_Btn">儲存</string>
     <string name="str_Recording_Btn">錄音</string>
     <string name="str_Meaning_Edt_Hint">輸入語意</string>
-
+    <string name="str_Setting_Txv">設定</string>
 
 
 </resources>

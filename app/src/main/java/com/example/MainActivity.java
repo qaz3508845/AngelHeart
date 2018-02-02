@@ -2,6 +2,7 @@ package com.example;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.speech.tts.Voice;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     personalInformationDAO db;
     TextView account_Edt;
     TextView password_Edt;
-
 
 
     @Override
@@ -40,13 +40,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginOnClick(View view) {
-        db=new personalInformationDAO(MainActivity.this);
-        account_Edt=(EditText)findViewById(R.id.account_Edt);
+        db = new personalInformationDAO(MainActivity.this);
+        account_Edt = (EditText) findViewById(R.id.account_Edt);
+        password_Edt = (EditText) findViewById(R.id.password_Edt);
 
-//        Cursor cursor= db.loginUser(
-//
-//        );
-//        cursor.moveToFirst();
+        // Get text from email and passord field
+        final String email = account_Edt.getText().toString();
+        final String password = password_Edt.getText().toString();
+
+        // Initialize  AsyncLogin() class with email and password
+        new AsyncLogin().execute(email, password);
+
 
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, voiceActivity.class);
@@ -54,8 +58,16 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    private class AsyncLogin extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
+    }
+
+
     public void clearTableOnClick(View view) {
         db.DROP();
     }
+
 }
-//maby has commit?

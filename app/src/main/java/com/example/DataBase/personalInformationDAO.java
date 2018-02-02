@@ -3,6 +3,7 @@ package com.example.DataBase;
  * Created by qaz35 on 2018/1/20/020.
  */
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -39,7 +40,6 @@ public class personalInformationDAO {
     public static final String TAG = "registeredDAO";
 
 
-
     private SQLiteDatabase database;
     private DBHelper dbHelper;
     private Context context;
@@ -63,12 +63,11 @@ public class personalInformationDAO {
         dbHelper.close();
     }
 
-    public void insertPersonalInformation(String name,String account, String password, String phone,String address) {
+    public void insertPersonalInformation(String name, String account, String password, String phone, String address) {
 //        open();
 //        ContentValues cv = new ContentValues();
 
-        new SendRequest().execute(name,account,password,phone,address);
-
+        new SendRequest().execute(name, account, password, phone, address);
 
 
 //        cv.put(DBHelper.personalInformation_TABLE_account, account);
@@ -86,19 +85,20 @@ public class personalInformationDAO {
 //        }
 
     }
-//    public boolean insertPersonalInformation(int id,String name ,String phone,String account,String password
+
+    //    public boolean insertPersonalInformation(int id,String name ,String phone,String account,String password
 //    ,String address,String dateTime) {
-    public boolean insertPersonalInformation(ShowItem showItem){
+    public boolean insertPersonalInformation(ShowItem showItem) {
         open();
         ContentValues cv = new ContentValues();
 
-        cv.put(DBHelper.personalInformation_TABLE_id,showItem.getP_id());
-        cv.put(DBHelper.personalInformation_TABLE_name,showItem.getP_name());
-        cv.put(DBHelper.personalInformation_TABLE_phone,showItem.getP_phone());
-        cv.put(DBHelper.personalInformation_TABLE_account,showItem.getP_account());
-        cv.put(DBHelper.personalInformation_TABLE_password,showItem.getP_password());
-        cv.put(DBHelper.personalInformation_TABLE_address,showItem.getP_address());
-        cv.put(DBHelper.personalInformation_TABLE_datetime,showItem.getP_datetime());
+        cv.put(DBHelper.personalInformation_TABLE_id, showItem.getP_id());
+        cv.put(DBHelper.personalInformation_TABLE_name, showItem.getP_name());
+        cv.put(DBHelper.personalInformation_TABLE_phone, showItem.getP_phone());
+        cv.put(DBHelper.personalInformation_TABLE_account, showItem.getP_account());
+        cv.put(DBHelper.personalInformation_TABLE_password, showItem.getP_password());
+        cv.put(DBHelper.personalInformation_TABLE_address, showItem.getP_address());
+        cv.put(DBHelper.personalInformation_TABLE_datetime, showItem.getP_datetime());
 
         try {
             database.insert(DBHelper.personalInformation_TABLE, null, cv);
@@ -111,7 +111,8 @@ public class personalInformationDAO {
             return false;
         }
     }
-        public Cursor getAllData() {
+
+    public Cursor getAllData() {
 //        Cursor cursor= database.query(DBHelper.personalInformation_TABLE,new String[]{DBHelper.personalInformation_TABLE_id
 //                        , DBHelper.personalInformation_TABLE_name,DBHelper.personalInformation_TABLE_phone
 //                        ,DBHelper.personalInformation_TABLE_account,DBHelper.personalInformation_TABLE_password
@@ -133,11 +134,11 @@ public class personalInformationDAO {
                 "SELECT " + DBHelper.personalInformation_TABLE_account
                         + " FROM " + DBHelper.personalInformation_TABLE
                         + " WHERE " + DBHelper.personalInformation_TABLE_account + " = '" + account + "' "
-                        + " AND "+DBHelper.personalInformation_TABLE_password+" = '"+password+"' "
-        ,null);
-        if(cursor.getCount()>0){
+                        + " AND " + DBHelper.personalInformation_TABLE_password + " = '" + password + "' "
+                , null);
+        if (cursor.getCount() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -150,22 +151,24 @@ public class personalInformationDAO {
     }
 
 
-
-
-
-
     class SendRequest extends AsyncTask<String, Void, String> {
         ShowItem showItem;
         URL url;
+        ProgressDialog pdLoading = new ProgressDialog(context);
+
         protected void onPreExecute() {
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
         }
 
         protected String doInBackground(String... arg0) {
 
             try {
 
-//                url= new URL("http://192.168.137.122/AngelHeart/insert.php");//伺服器位置
-                URL url=new URL("http://192.168.137.86/Test/test.php");
+                url = new URL("http://192.168.137.122/AngelHeart/insert.php");//伺服器位置
+//                URL url=new URL("http://192.168.137.86/Test/test.php");
 //                URL url=new URL("http://192.168.137.122/AngelHeart/test.php");
                 JSONObject postDataParams = new JSONObject();//創建json
 
@@ -233,31 +236,29 @@ public class personalInformationDAO {
 //        HelloWorld=(TextView)findViewById(R.id.HelloWorld);
 //        HelloWorld.setText(result);
 //            Log.e("test",result);
+            pdLoading.dismiss();
 
-
-            try{
-                Log.e("test",result);
+            try {
+                Log.e("test", result);
                 JSONObject jsonObject = new JSONObject(result);
-                showItem=new ShowItem(jsonObject.getInt("p_id")
-                        ,jsonObject.getString("p_name")
-                        ,jsonObject.getString("p_phone")
-                        ,jsonObject.getString("p_account")
-                        ,jsonObject.getString("p_password")
-                        ,jsonObject.getString("p_address")
-                        ,jsonObject.getString("p_datetime")
+                showItem = new ShowItem(jsonObject.getInt("p_id")
+                        , jsonObject.getString("p_name")
+                        , jsonObject.getString("p_phone")
+                        , jsonObject.getString("p_account")
+                        , jsonObject.getString("p_password")
+                        , jsonObject.getString("p_address")
+                        , jsonObject.getString("p_datetime")
                 );
 
                 insertPersonalInformation(showItem);
 
-            }
-            catch(JSONException e) {
-                Log.e("LogError",result);
+            } catch (JSONException e) {
+                Log.e("LogError", result);
                 e.printStackTrace();
 //
             }
 
         }
-
 
 
         public String getPostDataString(JSONObject params) throws Exception {
@@ -285,14 +286,6 @@ public class personalInformationDAO {
             return result.toString();
         }
     }
-
-
-
-
-
-
-
-
 
 
 }
