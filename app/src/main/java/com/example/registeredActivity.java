@@ -3,6 +3,7 @@ package com.example;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +12,7 @@ import android.widget.Toast;
 import com.example.DataBase.personalInformationDAO;
 
 
-public class registeredActivity extends AppCompatActivity  {
+public class registeredActivity extends AppCompatActivity implements AsyncTaskResult<String> {
 
     personalInformationDAO db;
 
@@ -29,6 +30,8 @@ public class registeredActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered);
         db = new personalInformationDAO(registeredActivity.this);
+
+
     }
 
     public void registeredBtnClick(View view) {
@@ -56,8 +59,12 @@ public class registeredActivity extends AppCompatActivity  {
             String address = address_Edt.getText().toString();
             String name = name_Edt.getText().toString();
 //            boolean boo=db.insertPersonalInformation(account,password,phone);
-            db.insertPersonalInformation(name, phone, account, password, address);
-            boolean boo=true;
+//            db.insertPersonalInformation(name, phone, account, password, address);
+            SendRequest SR = new SendRequest();
+            SR.connectionTestResult = this;
+            SR.execute(name, phone, account, password, address);
+
+
 //            if (boo) {
 //                Toast.makeText(registeredActivity.this, "創建成功", Toast.LENGTH_LONG).show();
 //                Intent intent = new Intent();
@@ -78,19 +85,6 @@ public class registeredActivity extends AppCompatActivity  {
 
 
     }
-    public void Test(boolean boo){
-        if (boo) {
-            Toast.makeText(registeredActivity.this, "創建成功", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent();
-            intent.setClass(registeredActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-
-        } else {
-            Toast.makeText(registeredActivity.this, "創建失敗,可能是伺服器未啟用", Toast.LENGTH_LONG).show();
-//
-        }
-    }
 
     public void loginBtnOnClick(View view) {
         Intent intent = new Intent();
@@ -98,5 +92,19 @@ public class registeredActivity extends AppCompatActivity  {
         startActivity(intent);
         finish();
 
+    }
+
+    @Override
+    public void taskFinish(String result) {
+        Log.e("TASKFINISH", result);
+        if (result.equals("true")) {
+            Toast.makeText(this, "註冊成功", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent();
+            intent.setClass(registeredActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        } else
+            Toast.makeText(this, "註冊失敗,帳號可能重複,請換一組帳號在試一次", Toast.LENGTH_LONG).show();
     }
 }
