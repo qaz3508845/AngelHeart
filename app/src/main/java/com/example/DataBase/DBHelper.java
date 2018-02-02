@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TAG = "DBHelper";//此class名稱 用於顯示TAG
 
     private static final String DATABASE_NAME = "AngelHeart_DB";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     public static final String personalInformation_TABLE = "personalInformation";//資料表名稱
     public static final String personalInformation_TABLE_id = "p_id";
