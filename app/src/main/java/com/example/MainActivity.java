@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void clearTableOnClick(View view) {
-        db.DROP();
-    }
+//    public void clearTableOnClick(View view) {
+//        db.DROP();
+//    }
 
 }

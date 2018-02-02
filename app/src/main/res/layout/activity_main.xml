@@ -105,13 +105,13 @@
         android:layout_toEndOf="@+id/account_Txv"
         android:text="@string/str_Login_Btn" />
 
-    <Button
-        android:id="@+id/clearTable_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/registered_Btn"
-        android:layout_below="@+id/registered_Btn"
-        android:layout_marginTop="30dp"
-        android:onClick="clearTableOnClick"
-        android:text="Button" />
+    <!--<Button-->
+        <!--android:id="@+id/clearTable_Btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignStart="@+id/registered_Btn"-->
+        <!--android:layout_below="@+id/registered_Btn"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:onClick="clearTableOnClick"-->
+        <!--android:text="Button" />-->
 </RelativeLayout>

@@ -12,15 +12,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.AsyncResponse;
 import com.example.ShowViewList.ShowItem;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -38,7 +36,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class personalInformationDAO {
     public static final String TAG = "registeredDAO";
-
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
@@ -70,20 +67,6 @@ public class personalInformationDAO {
         new SendRequest().execute(name, account, password, phone, address);
 
 
-//        cv.put(DBHelper.personalInformation_TABLE_account, account);
-//        cv.put(DBHelper.personalInformation_TABLE_password, password);
-//        cv.put(DBHelper.personalInformation_TABLE_phone, phone);
-//        try {
-//            database.insert(DBHelper.personalInformation_TABLE, null, cv);
-//            Log.e(TAG, "資料新建成功");
-//            return true;
-//
-//        } catch (Exception e) {
-//            Log.e(TAG, "資料新建失敗" + e.getMessage());
-//            e.printStackTrace();
-//            return false;
-//        }
-
     }
 
     //    public boolean insertPersonalInformation(int id,String name ,String phone,String account,String password
@@ -103,6 +86,7 @@ public class personalInformationDAO {
         try {
             database.insert(DBHelper.personalInformation_TABLE, null, cv);
             Log.e(TAG, "資料新建成功");
+
             return true;
 
         } catch (Exception e) {
@@ -156,9 +140,10 @@ public class personalInformationDAO {
         URL url;
         ProgressDialog pdLoading = new ProgressDialog(context);
 
+
         protected void onPreExecute() {
             pdLoading.setMessage("\tLoading...");
-            pdLoading.setCancelable(false);
+            pdLoading.setCancelable(true);
             pdLoading.show();
 
         }
@@ -167,7 +152,7 @@ public class personalInformationDAO {
 
             try {
 
-                url = new URL("http://192.168.137.122/AngelHeart/insert.php");//伺服器位置
+                url = new URL("http://192.168.137.122/AngelHeart/personal_insert.php");//伺服器位置
 //                URL url=new URL("http://192.168.137.86/Test/test.php");
 //                URL url=new URL("http://192.168.137.122/AngelHeart/test.php");
                 JSONObject postDataParams = new JSONObject();//創建json
@@ -221,10 +206,14 @@ public class personalInformationDAO {
                     return sb.toString();
 
                 } else {
-                    return new String("false : " + responseCode);
+//                    return new String("false : " + responseCode);
+
+                    return responseCode + "";
                 }
             } catch (Exception e) {
                 return new String("Exception: " + e.getMessage());
+            } finally {
+                pdLoading.dismiss();
             }
         }
 
@@ -235,27 +224,41 @@ public class personalInformationDAO {
 //                Toast.LENGTH_LONG).show();
 //        HelloWorld=(TextView)findViewById(R.id.HelloWorld);
 //        HelloWorld.setText(result);
-//            Log.e("test",result);
-            pdLoading.dismiss();
+            Log.e("testAAA", result);
 
-            try {
-                Log.e("test", result);
-                JSONObject jsonObject = new JSONObject(result);
-                showItem = new ShowItem(jsonObject.getInt("p_id")
-                        , jsonObject.getString("p_name")
-                        , jsonObject.getString("p_phone")
-                        , jsonObject.getString("p_account")
-                        , jsonObject.getString("p_password")
-                        , jsonObject.getString("p_address")
-                        , jsonObject.getString("p_datetime")
-                );
+            if (result.equals("true")) {
 
-                insertPersonalInformation(showItem);
+                pdLoading.dismiss();
 
-            } catch (JSONException e) {
-                Log.e("LogError", result);
-                e.printStackTrace();
+
+            } else {
+                Log.e("RESULT TEST", result);
+
+                pdLoading.dismiss();
+//                try {
+//                    Log.e("test", result);
+//                    JSONObject jsonObject = new JSONObject(result);
+//                    showItem = new ShowItem(jsonObject.getInt("p_id")
+//                            , jsonObject.getString("p_name")
+//                            , jsonObject.getString("p_phone")
+//                            , jsonObject.getString("p_account")
+//                            , jsonObject.getString("p_password")
+//                            , jsonObject.getString("p_address")
+//                            , jsonObject.getString("p_datetime")
+//                    );
 //
+//
+//                    pdLoading.dismiss();
+//                    boo = insertPersonalInformation(showItem);
+//
+//                } catch (JSONException e) {
+//                    Log.e("LogError", result);
+//                    e.printStackTrace();
+////
+//                } finally {
+//                    pdLoading.dismiss();
+//                }
+
             }
 
         }

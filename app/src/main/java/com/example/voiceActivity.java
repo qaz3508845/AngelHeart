@@ -48,7 +48,7 @@ public class voiceActivity extends AppCompatActivity {
 
     public void showStartOnClick(View view) {
         Intent intent=new Intent();
-        intent.setClass(voiceActivity.this,Show.class);
+        intent.setClass(voiceActivity.this,MainActivity.class);
         startActivity(intent);
     }
 
