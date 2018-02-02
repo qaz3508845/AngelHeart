@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TAG = "DBHelper";//此class名稱 用於顯示TAG
 
     private static final String DATABASE_NAME = "AngelHeart_DB";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 9;
 
     public static final String personalInformation_TABLE = "personalInformation";//資料表名稱
     public static final String personalInformation_TABLE_id = "p_id";
@@ -60,7 +60,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     private static final String SQL_CREATE_TABLE_voice = "CREATE TABLE " + voice_TABLE + "("
-            + voice_TABLE_number + " INTEGER "
+            + voice_TABLE_number + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + voice_TABLE_translation + " TEXT, "
             + voice_TABLE_translationed + " TEXT, "
             + voice_TABLE_datetime + " TEXT "

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -39,7 +40,7 @@ public class voiceSettingActivity extends AppCompatActivity {
     voiceDAO db;
     ListView Lv;
     voiceItem vItem;
-    static int number=0;
+    static int number;
     ArrayList<voiceItem> itemArrayList=new ArrayList<>();
 
     @Override
@@ -49,11 +50,15 @@ public class voiceSettingActivity extends AppCompatActivity {
 //        test=(TextView)findViewById(R.id.test);
         db=new voiceDAO(voiceSettingActivity.this);
         Lv = (ListView)findViewById(R.id.voice_Lv);
-
+        int number=1;
         Cursor cursor= db.getAllData();
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             vItem=new voiceItem();
+//            vItem.setV_number(cursor.getInt(cursor.getColumnIndex(DBHelper.voice_TABLE_number)));
+            vItem.setV_id(cursor.getInt(cursor.getColumnIndex(DBHelper.voice_TABLE_number)));
+            Log.e("TEST",cursor.getInt(cursor.getColumnIndex(DBHelper.voice_TABLE_number))+"");
+            vItem.setV_number(number++);
             vItem.setV_translation(cursor.getString(cursor.getColumnIndex(DBHelper.voice_TABLE_translation)));
             vItem.setV_translationed(cursor.getString(cursor.getColumnIndex(DBHelper.voice_TABLE_translationed)));
             vItem.setV_datetime(cursor.getString(cursor.getColumnIndex(DBHelper.voice_TABLE_datetime)));
@@ -62,10 +67,10 @@ public class voiceSettingActivity extends AppCompatActivity {
             cursor.moveToNext();
 
         }
-        voiceAdapter adapter=new voiceAdapter(voiceSettingActivity.this,itemArrayList);
+        voiceAdapter adapter=new voiceAdapter(db,voiceSettingActivity.this,itemArrayList);
         Lv.setAdapter(adapter);
 
-
+//        number=cursor.getCount();
 //        test.setText("如果顯示無法連接上GOOGLE伺服器 請至設定");
     }
 
@@ -118,7 +123,7 @@ public class voiceSettingActivity extends AppCompatActivity {
                                         Calendar mCal = Calendar.getInstance();
                                         CharSequence s = DateFormat.format("yyyy-MM-dd kk:mm:ss", mCal.getTime());
                                        //讀資料庫輸入傳回值 如果成功 true
-                                        boolean boo= db.insertVoice(number++,result.get(0),name, (String) s);
+                                        boolean boo= db.insertVoice(result.get(0),name, (String) s);
                                         if(boo){
                                             Toast.makeText(getApplicationContext(), "輸入成功: " + name, Toast.LENGTH_SHORT).show();
                                             Intent intent=new Intent(voiceSettingActivity.this,voiceSettingActivity.class);

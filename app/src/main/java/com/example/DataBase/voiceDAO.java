@@ -61,11 +61,18 @@ public class voiceDAO {
         dbHelper.close();
     }
 
-    public boolean insertVoice(int number, String translation, String translationed, String datetime) {
+    public void deleteInfo(String i){
+
+        database.delete(DBHelper.voice_TABLE," v_number = "+i,null);
+
+    }
+
+
+    public boolean insertVoice( String translation, String translationed, String datetime) {
 //        new SendRequest().execute(translation,translationed,datetime);
         open();
         ContentValues cv = new ContentValues();
-        cv.put(DBHelper.voice_TABLE_number, number);
+//        cv.put(DBHelper.voice_TABLE_number, number);
         cv.put(DBHelper.voice_TABLE_translation, translation);
         cv.put(DBHelper.voice_TABLE_translationed, translationed);
         cv.put(DBHelper.voice_TABLE_datetime, datetime);
@@ -105,6 +112,8 @@ public class voiceDAO {
 //            return false;
 //        }
 //    }
+
+
 
     public Cursor getAllData() {
         Cursor cursor = database.query(DBHelper.voice_TABLE, new String[]{

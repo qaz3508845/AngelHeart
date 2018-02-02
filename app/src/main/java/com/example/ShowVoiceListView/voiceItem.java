@@ -6,7 +6,15 @@ package com.example.ShowVoiceListView;
 
 public class voiceItem {
 
+    public int getV_id() {
+        return v_id;
+    }
 
+    public void setV_id(int v_id) {
+        this.v_id = v_id;
+    }
+
+    int v_id;
     int v_number;
     String v_translationed;
     String v_translation;
