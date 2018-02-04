@@ -116,7 +116,7 @@
         android:onClick="loginBtnOnClick"
         android:shadowColor="#2A11A8"
         android:shadowRadius="25"
-        android:text="@string/str_Login_Btn"
+        android:text="回到登入"
         android:textColor="#FFFFFF" />
 
     <TextView

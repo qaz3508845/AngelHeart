@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -25,22 +27,43 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".registeredActivity" android:screenOrientation="portrait" />
-        <activity android:name=".voiceActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".registeredActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".voiceActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
 
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".personalInformationActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".emergencyContactActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".addVoiceActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".mapViewActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".addEmergencyContactActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".voiceSettingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ShowViewList.Show" android:screenOrientation="portrait"/>
-        <activity android:name=".AlertDialogActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".personalInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".emergencyContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".addVoiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".addEmergencyContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".voiceSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShowViewList.Show"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlertDialogActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".setPersonalInformationActivity"></activity>
     </application>
 
 </manifest>

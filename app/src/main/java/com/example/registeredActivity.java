@@ -1,5 +1,6 @@
 package com.example;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,13 +26,15 @@ public class registeredActivity extends AppCompatActivity implements AsyncTaskRe
     EditText name_Edt;
 
 
+    ProgressDialog pdLoading ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registered);
         db = new personalInformationDAO(registeredActivity.this);
 
-
+        pdLoading= new ProgressDialog(registeredActivity.this);
     }
 
     public void registeredBtnClick(View view) {
@@ -53,6 +56,9 @@ public class registeredActivity extends AppCompatActivity implements AsyncTaskRe
             Toast.makeText(registeredActivity.this, "你兩次密碼輸入不一致，請重新輸入密碼"
                     , Toast.LENGTH_LONG).show();
         } else {
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
             String account = account_Edt.getText().toString();
             String password = password_Edt.getText().toString();
             String phone = phone_Edt.getText().toString();
@@ -103,8 +109,10 @@ public class registeredActivity extends AppCompatActivity implements AsyncTaskRe
             intent.setClass(registeredActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-
-        } else
-            Toast.makeText(this, "註冊失敗,帳號可能重複,請換一組帳號在試一次", Toast.LENGTH_LONG).show();
+            pdLoading.dismiss();
+        } else {
+            Toast.makeText(this, "註冊失敗,帳號可能重複,請換一組帳號在試一次,如果還是不行,請聯絡服務人員", Toast.LENGTH_LONG).show();
+            pdLoading.dismiss();
+        }
     }
 }

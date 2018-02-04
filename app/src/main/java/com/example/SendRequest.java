@@ -61,7 +61,7 @@ public class SendRequest extends AsyncTask<String, Void, String> {
 
             //HTTP連接
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //如果時間超過 就不進行post
+            //如果讀取時間超過 就不進行post
             conn.setReadTimeout(15000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);
             conn.setRequestMethod("POST");

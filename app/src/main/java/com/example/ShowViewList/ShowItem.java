@@ -5,13 +5,13 @@ package com.example.ShowViewList;
  */
 
 public class ShowItem {
-    int p_id;
-    String p_name;
-    String p_phone;
-    String p_account;
-    String p_password;
-    String p_address;
-    String p_datetime;
+    int p_id=0;
+    String p_name="";
+    String p_phone="";
+    String p_account="";
+    String p_password="";
+    String p_address="";
+    String p_datetime="";
 
     public ShowItem() {
     }

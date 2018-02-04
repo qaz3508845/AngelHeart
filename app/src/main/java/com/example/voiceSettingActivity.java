@@ -101,9 +101,8 @@ public class voiceSettingActivity extends AppCompatActivity {
                     final ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     voiceArr.add(result.get(0));
                     Log.e("inVoiceTest",result.get(0));
+
                     final View item= LayoutInflater.from(voiceSettingActivity.this).inflate(R.layout.activity_add_voice,null);
-
-
 
                     //彈出框
                     new AlertDialog.Builder(voiceSettingActivity.this)

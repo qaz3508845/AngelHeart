@@ -3,6 +3,7 @@ package com.example.DataBase;
  * Created by qaz35 on 2018/1/20/020.
  */
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -97,6 +98,14 @@ public class personalInformationDAO {
         }
     }
 
+    @SuppressLint("LongLogTag")
+    public void deleteInformation(){
+        database.delete(DBHelper.personalInformation_TABLE,null,null);
+        Log.e(TAG+" deleteInformation","資料已刪除");
+
+    }
+
+
     public Cursor getAllData() {
 //        Cursor cursor= database.query(DBHelper.personalInformation_TABLE,new String[]{DBHelper.personalInformation_TABLE_id
 //                        , DBHelper.personalInformation_TABLE_name,DBHelper.personalInformation_TABLE_phone
@@ -105,9 +114,12 @@ public class personalInformationDAO {
 //                }
         Cursor cursor = database.query(DBHelper.personalInformation_TABLE, new String[]{
                         DBHelper.personalInformation_TABLE_id
+                ,DBHelper.personalInformation_TABLE_name
+                        , DBHelper.personalInformation_TABLE_phone
                         , DBHelper.personalInformation_TABLE_account
                         , DBHelper.personalInformation_TABLE_password
-                        , DBHelper.personalInformation_TABLE_phone
+                        ,DBHelper.personalInformation_TABLE_address
+                        ,DBHelper.personalInformation_TABLE_datetime
 
                 }
                 , null, null, null, null, null);
