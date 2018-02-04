@@ -60,7 +60,7 @@ public class personalInformationDAO {
         dbHelper.close();
     }
 
-    public void insertPersonalInformation(String name, String account, String password, String phone, String address) {
+    public void insertPersonalInformation(String name, String phone, String account, String password, String address) {
 //        open();
 //        ContentValues cv = new ContentValues();
 

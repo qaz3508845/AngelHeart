@@ -7,7 +7,7 @@
     tools:context="com.example.voiceActivity">
 
     <Button
-        android:id="@+id/voice_Btn"
+        android:id="@+id/voiceSetting_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/voice_Btn"
+        android:layout_toEndOf="@+id/voiceSetting_Btn"
         android:onClick="personalInformationOnClick"
         android:text="@string/str_PersonalInformation_Btn"
         tools:layout_editor_absoluteX="97dp"
@@ -50,33 +50,33 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/voice_Btn"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_below="@+id/personalInformation_Btn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="104dp"
-        android:background="@drawable/mybutton" />
+        android:background="@drawable/mybutton"
+        android:onClick="voiceBtnOnClick" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/translationed_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/voice_Btn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:text="TextView" />
+        android:layout_marginTop="44dp" />
 
     <Button
         android:id="@+id/show_Start_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/voice_Btn"
+        android:layout_alignStart="@+id/voiceSetting_Btn"
         android:layout_marginBottom="44dp"
         android:layout_marginStart="29dp"
         android:onClick="showStartOnClick"
-        android:text="Button" />
+        android:text="@string/str_Login_Btn" />
 
     <Button
         android:id="@+id/setting_Btn"
@@ -84,8 +84,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/show_Start_Btn"
         android:layout_alignBottom="@+id/show_Start_Btn"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/textView"
+        android:layout_alignEnd="@+id/mapView_Btn"
+        android:layout_marginEnd="26dp"
         android:onClick="settingOnClick"
         android:text="@string/str_Setting_Txv" />
 </RelativeLayout>

@@ -80,13 +80,13 @@ public class voiceSettingActivity extends AppCompatActivity {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 //        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH.toString());
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "請說出想做的事");
 
         try {
             startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
         } catch (ActivityNotFoundException a) {
-
+            a.printStackTrace();
         }
 
     }
@@ -100,8 +100,9 @@ public class voiceSettingActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {//語音判別有無成功
                     final ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     voiceArr.add(result.get(0));
-
+                    Log.e("inVoiceTest",result.get(0));
                     final View item= LayoutInflater.from(voiceSettingActivity.this).inflate(R.layout.activity_add_voice,null);
+
 
 
                     //彈出框

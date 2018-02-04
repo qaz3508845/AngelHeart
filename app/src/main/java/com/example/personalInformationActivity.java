@@ -13,6 +13,14 @@ public class personalInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_information);
     }
 
+    public void personalSetBtnOnClick(View view) {
+
+
+
+    }
+
+
+
     public void voiceOnClick(View view) {
         Intent intent = new Intent();
         intent.setClass(personalInformationActivity.this, voiceActivity.class);
@@ -40,5 +48,6 @@ public class personalInformationActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 
 }

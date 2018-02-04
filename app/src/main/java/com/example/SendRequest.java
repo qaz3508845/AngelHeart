@@ -120,12 +120,12 @@ public class SendRequest extends AsyncTask<String, Void, String> {
 //        HelloWorld.setText(result);
         Log.e("testAAA", result);
 
-        if (result.equals("true")) {
+//        if (result.equals("true")) {
 
 //            pdLoading.dismiss();
 
 
-        } else {
+//        } else {
             Log.e("RESULT TEST", result);
 
 //            pdLoading.dismiss();
@@ -153,7 +153,7 @@ public class SendRequest extends AsyncTask<String, Void, String> {
 //                    pdLoading.dismiss();
 //                }
 
-        }
+//        }
 
     }
 
