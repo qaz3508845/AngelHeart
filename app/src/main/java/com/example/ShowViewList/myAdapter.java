@@ -58,10 +58,10 @@ public class myAdapter extends BaseAdapter{
             holder=(ViewHolder)view.getTag();
         }
 
-        holder.id_Txv.setText(showItem.getId()+"");
-        holder.account_Txv.setText(showItem.getAccount());
-        holder.password_Txv.setText(showItem.getPassword());
-        holder.phone_Txv.setText(showItem.getPhone());
+        holder.id_Txv.setText(showItem.getP_id()+"");
+        holder.account_Txv.setText(showItem.getP_account());
+        holder.password_Txv.setText(showItem.getP_password());
+        holder.phone_Txv.setText(showItem.getP_phone());
 
 
 

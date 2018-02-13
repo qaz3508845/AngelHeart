@@ -19,19 +19,4 @@
         tools:layout_editor_absoluteX="84dp"
         tools:layout_editor_absoluteY="75dp" />
 
-    <Button
-        android:id="@+id/recording_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/meaning_Edt"
-        android:layout_centerVertical="true"
-        android:text="@string/str_Recording_Btn" />
-
-    <Button
-        android:id="@+id/Save_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/recording_Btn"
-        android:layout_alignEnd="@+id/meaning_Edt"
-        android:text="@string/str_Save_Btn" />
 </RelativeLayout>

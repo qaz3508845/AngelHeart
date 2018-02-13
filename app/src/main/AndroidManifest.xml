@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,22 +16,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".registeredActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".voiceActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".registeredActivity" />
-        <activity android:name=".voiceActivity" />
-        <activity android:name=".personalInformationActivity" />
-        <activity android:name=".emergencyContactActivity" />
-        <activity android:name=".addVoiceActivity" />
-        <activity android:name=".mapViewActivity" />
-        <activity android:name=".addEmergencyContactActivity" />
-        <activity android:name=".voiceSettingActivity" />
-        <activity android:name=".ShowViewList.Show"></activity>
+        <activity
+            android:name=".personalInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".emergencyContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".addVoiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mapViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".addEmergencyContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".voiceSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShowViewList.Show"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AlertDialogActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".setPersonalInformationActivity"></activity>
     </application>
 
 </manifest>

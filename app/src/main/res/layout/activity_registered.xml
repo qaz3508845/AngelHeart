@@ -12,25 +12,42 @@
         android:layout_width="189dp"
         android:layout_height="50dp"
 
-        android:layout_below="@+id/phone_Edt"
+        android:layout_above="@+id/login_Btn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-
         android:background="@drawable/allbutton"
         android:onClick="registeredBtnClick"
         android:shadowColor="#2A11A8"
         android:shadowRadius="25"
-        android:textColor="#FFFFFF"
-        android:text="註冊" />
+        android:text="註冊"
+        android:textColor="#FFFFFF" />
+    <TextView
+        android:id="@+id/name_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name_Edt"
+        android:layout_alignBottom="@+id/name_Edt"
+        android:layout_alignStart="@+id/account_Txv"
+        android:text="@string/str_Name_Txv" />
 
+    <EditText
+        android:id="@+id/name_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/account_Edt"
+        android:layout_below="@+id/textView3"
+        android:ems="10"
+        android:hint="@string/str_Name_Btn_Hint"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="textPersonName" />
     <TextView
         android:id="@+id/account_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="33dp"
+        android:layout_below="@+id/phone_Edt"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="24dp"
+        android:layout_toStartOf="@+id/registered_Btn"
         android:text="@string/str_Account_Txv" />
 
     <TextView
@@ -69,18 +86,18 @@
         android:id="@+id/phone_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/phone_Edt"
-        android:layout_alignBottom="@+id/phone_Edt"
-        android:layout_alignStart="@+id/password_Txv"
+        android:layout_alignStart="@+id/name_Txv"
+        android:layout_below="@+id/name_Edt"
+        android:layout_marginTop="25dp"
         android:text="@string/str_Phone_Txv" />
 
     <EditText
         android:id="@+id/phone_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/password_Edt"
-        android:layout_below="@+id/confirmPassword_Edt"
-        android:layout_marginTop="13dp"
+        android:layout_alignBaseline="@+id/phone_Txv"
+        android:layout_alignBottom="@+id/phone_Txv"
+        android:layout_alignStart="@+id/name_Edt"
         android:ems="10"
         android:hint="@string/str_Phone_Hint"
         android:inputType="phone" />
@@ -89,18 +106,18 @@
         android:id="@+id/login_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/registered_Btn"
-        android:layout_marginTop="13dp"
-        android:layout_toEndOf="@+id/confirmPassword_Txv"
 
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
 
         android:background="@drawable/allbutton"
         android:onClick="loginBtnOnClick"
         android:shadowColor="#2A11A8"
         android:shadowRadius="25"
-        android:textColor="#FFFFFF"
-
-        android:text="@string/str_Login_Btn" />
+        android:text="回到登入"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/confirmPassword_Txv"
@@ -129,5 +146,26 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/account_Txv"
         android:text="@string/str_Registered_Btn" />
+
+
+
+    <TextView
+        android:id="@+id/address_Txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/confirmPassword_Txv"
+        android:layout_below="@+id/confirmPassword_Edt"
+        android:layout_marginTop="13dp"
+        android:text="@string/str_address_Txv" />
+
+    <EditText
+        android:id="@+id/address_Edt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/confirmPassword_Edt"
+        android:layout_alignTop="@+id/address_Txv"
+        android:ems="10"
+        android:hint="請輸入地址"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
