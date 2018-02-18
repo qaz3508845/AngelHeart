@@ -16,6 +16,9 @@ import com.example.ShowViewList.Show;
 
 public class MainActivity extends AppCompatActivity {
     //YA
+
+
+
     personalInformationDAO db;
     TextView account_Edt;
     TextView password_Edt;
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, voiceActivity.class);
+        intent.setClass(MainActivity.this, newSlideActivity.class);
         startActivity(intent);
         finish();
     }
