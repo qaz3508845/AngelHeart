@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent();
-        intent.setClass(MainActivity.this, voiceActivity.class);
+        intent.setClass(MainActivity.this, viewPagerMainFragment.class);
         startActivity(intent);
         finish();
     }

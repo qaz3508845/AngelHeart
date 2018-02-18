@@ -21,37 +21,37 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".registeredActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".voiceActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
+        <!--<activity-->
+            <!--android:name=".voiceActivity"-->
+            <!--android:screenOrientation="portrait">-->
+            <!--<intent-filter>-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
 
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".personalInformationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".emergencyContactActivity"
-            android:screenOrientation="portrait" />
+                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".personalInformationActivity"-->
+            <!--android:screenOrientation="portrait" />-->
+        <!--<activity-->
+            <!--android:name=".emergencyContactActivity"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name=".addVoiceActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".mapViewActivity"
-            android:screenOrientation="portrait" />
+        <!--<activity-->
+            <!--android:name=".mapViewActivity"-->
+            <!--android:screenOrientation="portrait" />-->
         <activity
             android:name=".addEmergencyContactActivity"
             android:screenOrientation="portrait" />
