@@ -4,10 +4,33 @@
     android:layout_height="match_parent"
     tools:context="com.example.mapViewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginBottom="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/maps_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="開啟地圖"
+                android:textSize="20dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+
 
 </FrameLayout>

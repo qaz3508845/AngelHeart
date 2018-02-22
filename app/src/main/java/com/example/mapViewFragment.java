@@ -1,11 +1,13 @@
 package com.example;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -59,7 +61,21 @@ public class mapViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_map_view, container, false);
+
+        //对View中控件的操作方法
+        Button btn = (Button)view.findViewById(R.id.maps_btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(getContext(),MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 
 }

@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.newSlideActivity">
 
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.viewPagerMainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="191dp"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>
