@@ -47,7 +47,6 @@
     <string name="str_Recording_Btn">錄音</string>
     <string name="str_Meaning_Edt_Hint">輸入語意</string>
     <string name="str_Setting_Txv">設定</string>
-    <string name="hello_blank_fragment">Hello</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
