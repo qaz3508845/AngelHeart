@@ -17,7 +17,7 @@
         android:text="@string/str_Add_Btn" />
 
     <ListView
-        android:id="@+id/voice_Lv"
+        android:id="@+id/emergency_Lv"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentStart="true"
