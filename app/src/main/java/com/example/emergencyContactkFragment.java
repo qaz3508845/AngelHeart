@@ -1,12 +1,35 @@
 package com.example;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.DataBase.DBHelper;
+import com.example.DataBase.emergencyDAO;
+import com.example.DataBase.personalInformationDAO;
+import com.example.DataBase.voiceDAO;
+import com.example.ShowEmergencyListView.emergencyAdapter;
+import com.example.ShowEmergencyListView.emergencyItem;
+import com.example.ShowViewList.Show;
+import com.example.ShowViewList.ShowItem;
+import com.example.ShowViewList.myAdapter;
+import com.example.ShowVoiceListView.voiceItem;
+
+import java.util.ArrayList;
 
 
 /**
@@ -25,8 +48,13 @@ public class emergencyContactkFragment extends Fragment {
     private String mParam2;
 
 
-    public emergencyContactkFragment() {
+    ListView Lv;
+    emergencyItem eItem;
+    Button addEmergencyBtn, editEmergencyBtn;
+    emergencyDAO db;
 
+    public emergencyContactkFragment() {
+        // Required empty public constructor
     }
 
     /**
@@ -47,6 +75,7 @@ public class emergencyContactkFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,12 +93,66 @@ public class emergencyContactkFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        addEmergencyBtn = (Button) view.findViewById(R.id.addEmergency_Btn);
+        editEmergencyBtn = (Button) view.findViewById(R.id.editEmergencyBtn);
+        Lv = (ListView) view.findViewById(R.id.emergency_Lv);
+        db = new emergencyDAO(getContext());
+        ArrayList<emergencyItem> itemArrayList = new ArrayList<>();
+        Cursor cursor = db.getAllData();
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            eItem = new emergencyItem();
+            eItem.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.emergency_TABLE_id)));
+            eItem.setName(cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_name)));
+            eItem.setNickName(cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_nickName)));
+            eItem.setPhone(cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_phone)));
+            itemArrayList.add(eItem);
+            cursor.moveToNext();
+        }
+
+        final emergencyAdapter adapter = new emergencyAdapter(getContext(), itemArrayList);
+        Lv.setAdapter(adapter);
 
 
+        addEmergencyBtn.setOnClickListener(new Button.OnClickListener() {
 
+            @Override
+            public void onClick(final View view) {
+                Log.e("新增", "彈出");
+                final View item = LayoutInflater.from(getContext()).inflate(R.layout.activity_add_emergency_information, null);
+                new AlertDialog.Builder(getContext()).setTitle("請輸入緊急聯絡人資訊")
+                        .setView(item).setPositiveButton("確定輸入", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        EditText nameEdt = (EditText) item.findViewById(R.id.emergencyNameEdt);
+                        EditText nickNameEdt = (EditText) item.findViewById(R.id.emergencyNickNameEdt);
+                        EditText phoneEdt = (EditText) item.findViewById(R.id.emergencyPhoneEdt);
+                        String name = nameEdt.getText().toString();
+                        String phone = phoneEdt.getText().toString();
+                        String nickName = nickNameEdt.getText().toString();
+                        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(nickName)) {
+                            Toast.makeText(getContext(), "資料輸入不完全,請確認資料已輸入", Toast.LENGTH_SHORT).show();
+                        } else {
+                            db.insertPersonalInformation(name, nickName, phone);
+                            startActivity(new Intent(getContext(),emergencyContactkFragment.class));
+                        }
+
+                    }
+                }).show();
+
+            }
+        });
+        editEmergencyBtn.setOnClickListener(new Button.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 }

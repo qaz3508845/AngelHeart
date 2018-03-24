@@ -44,7 +44,7 @@ public class voiceSettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_voice_setting);
 //        test=(TextView)findViewById(R.id.test);
         db=new voiceDAO(voiceSettingActivity.this);
-        Lv = (ListView)findViewById(R.id.emergency_Lv);
+        Lv = (ListView)findViewById(R.id.voice_Lv);
         int number=1;
         Cursor cursor= db.getAllData();
         cursor.moveToFirst();
