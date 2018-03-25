@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -97,7 +98,6 @@ public class emergencyContactkFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         addEmergencyBtn = (Button) view.findViewById(R.id.addEmergency_Btn);
-        editEmergencyBtn = (Button) view.findViewById(R.id.editEmergencyBtn);
         Lv = (ListView) view.findViewById(R.id.emergency_Lv);
         db = new emergencyDAO(getContext());
         ArrayList<emergencyItem> itemArrayList = new ArrayList<>();
@@ -113,7 +113,7 @@ public class emergencyContactkFragment extends Fragment {
             cursor.moveToNext();
         }
 
-        final emergencyAdapter adapter = new emergencyAdapter(getContext(), itemArrayList);
+        final emergencyAdapter adapter = new emergencyAdapter(db,getContext(), itemArrayList);
         Lv.setAdapter(adapter);
 
 
@@ -138,7 +138,21 @@ public class emergencyContactkFragment extends Fragment {
                             Toast.makeText(getContext(), "資料輸入不完全,請確認資料已輸入", Toast.LENGTH_SHORT).show();
                         } else {
                             db.insertPersonalInformation(name, nickName, phone);
-                            startActivity(new Intent(getContext(),emergencyContactkFragment.class));
+                            ArrayList<emergencyItem> itemArrayList = new ArrayList<>();
+                            Cursor cursor = db.getAllData();
+                            cursor.moveToFirst();
+                            while (!cursor.isAfterLast()) {
+                                eItem = new emergencyItem();
+                                eItem.setId(cursor.getInt(cursor.getColumnIndex(DBHelper.emergency_TABLE_id)));
+                                eItem.setName(cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_name)));
+                                eItem.setNickName(cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_nickName)));
+                                eItem.setPhone(cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_phone)));
+                                itemArrayList.add(eItem);
+                                cursor.moveToNext();
+                            }
+
+                            final emergencyAdapter adapter = new emergencyAdapter(db,getContext(), itemArrayList);
+                            Lv.setAdapter(adapter);
                         }
 
                     }
@@ -146,13 +160,7 @@ public class emergencyContactkFragment extends Fragment {
 
             }
         });
-        editEmergencyBtn.setOnClickListener(new Button.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
 }

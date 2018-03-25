@@ -1,26 +1,23 @@
 package com.example.ShowEmergencyListView;
 
 import android.Manifest;
-import android.Manifest.permission.*;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.DataBase.voiceDAO;
-import com.example.MainActivity;
+import com.example.DataBase.emergencyDAO;
 import com.example.R;
 
 import java.util.ArrayList;
@@ -33,13 +30,13 @@ public class emergencyAdapter extends BaseAdapter {
     private ArrayList<emergencyItem> data;
 
     private LayoutInflater showInflater;
-    //    voiceDAO db;
+        emergencyDAO db;
     Context mContext;
     private final static String CALL = "intent.action.CALL";
 
-    public emergencyAdapter(Context mContext, ArrayList<emergencyItem> data) {
+    public emergencyAdapter(emergencyDAO db,Context mContext, ArrayList<emergencyItem> data) {
         this.data = data;
-//        this.db = db;
+        this.db = db;
         this.mContext = mContext;
         showInflater = LayoutInflater.from(mContext);
     }
@@ -74,7 +71,7 @@ public class emergencyAdapter extends BaseAdapter {
                     , (TextView) view.findViewById(R.id.telephoneName)
                     , (Button) view.findViewById(R.id.newsBtn)
                     , (Button) view.findViewById(R.id.telephoneBtn)
-                    , (Button) view.findViewById(R.id.mapBtn)
+                    , (Button) view.findViewById(R.id.deleteBtn)
                     , (ImageView) view.findViewById(R.id.emergencyImg));
             view.setTag(holder);
         } else {
@@ -101,6 +98,28 @@ public class emergencyAdapter extends BaseAdapter {
 
 //                view.getContext().startActivity();
 
+            }
+        });
+        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("是否刪除?")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 左方按鈕方法
+                                db.deleteInfo(vItem.getId()+"");
+                                data.remove(position);
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                AlertDialog about_dialog = builder.create();
+                about_dialog.show();
             }
         });
 
@@ -136,18 +155,18 @@ public class emergencyAdapter extends BaseAdapter {
         TextView emergencyName;
         TextView emergencyNickName;
         TextView telephoneName;
-        Button newsBtn, telephoneBtn, mapBtn;
+        Button newsBtn, telephoneBtn, deleteBtn;
         ImageView imageBtn;
 
         public ViewHolder(TextView emergencyName, TextView emergencyNickName, TextView telephoneName
-                , Button newsBtn, Button telephoneBtn, Button mapBtn
+                , Button newsBtn, Button telephoneBtn, Button deleteBtn
                 , ImageView imageBtn) {
             this.emergencyName = emergencyName;
             this.emergencyNickName = emergencyNickName;
             this.telephoneName = telephoneName;
             this.newsBtn = newsBtn;
             this.telephoneBtn = telephoneBtn;
-            this.mapBtn = mapBtn;
+            this.deleteBtn = deleteBtn;
             this.imageBtn = imageBtn;
 
         }

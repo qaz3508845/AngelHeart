@@ -73,5 +73,10 @@ public class emergencyDAO {
             return false;
         }
     }
+    public void deleteInfo(String i){
 
+        database.delete(DBHelper.emergency_TABLE," e_id = "+i,null);
+        Log.e("delete","資料庫刪除"+i);
+
+    }
 }
