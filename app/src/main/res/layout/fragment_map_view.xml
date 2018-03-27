@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mapViewFragment">
+    tools:context="com.example.mapViewFragment"
+    android:background="@drawable/background_color">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="開啟地圖"
                 android:textSize="20dp"
+                android:background="@drawable/button_border"
                 />
 
         </LinearLayout>
@@ -33,4 +35,6 @@
     <!-- TODO: Update blank fragment layout -->
 
 
+
 </FrameLayout>
+

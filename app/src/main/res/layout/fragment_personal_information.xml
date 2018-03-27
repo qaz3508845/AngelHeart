@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.personalInformationFragment">
+    tools:context="com.example.personalInformationFragment"
+    android:background="@drawable/background_color">
 
 
     <LinearLayout
@@ -91,6 +92,7 @@
             android:gravity="center">
 
             <Button
+                android:background="@drawable/button_border"
                 android:id="@+id/personalSet_Btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ShowViewList.Show">
+    tools:context="com.example.ShowViewList.Show"
+    android:background="@drawable/background_color">
 
     <ListView
         android:layout_width="match_parent"

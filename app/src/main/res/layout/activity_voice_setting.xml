@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.voiceSettingActivity">
+    tools:context="com.example.voiceSettingActivity"
+    android:background="@drawable/background_color">
 
     <Button
         android:id="@+id/addVoice_Btn"
@@ -14,6 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="19dp"
         android:onClick="addVoiceBtnOnClick"
+        android:background="@drawable/button_border"
         android:text="@string/str_Add_Btn" />
 
     <ListView
