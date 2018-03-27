@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TAG = "DBHelper";//此class名稱 用於顯示TAG
 
     private static final String DATABASE_NAME = "AngelHeart_DB";
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 11;
 
     public static final String personalInformation_TABLE = "personalInformation";//資料表名稱
     public static final String personalInformation_TABLE_id = "p_id";
@@ -26,18 +26,34 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String personalInformation_TABLE_datetime = "p_datetime";
 
 
-    public static final String voice_TABLE = "voice";
+    public static final String voice_TABLE = "voice";//語音 線下
     public static final String voice_TABLE_number = "v_number";
     public static final String voice_TABLE_translationed = "v_translationed";
     public static final String voice_TABLE_translation = "v_translation";
     public static final String voice_TABLE_datetime = "v_datetime";
 
 
-    public static final String onlineVoice_TABLE = "onlileVoice";
+    public static final String onlineVoice_TABLE = "onlileVoice"; //線上 語音
     public static final String ov_voice_TABLE_id = "p_id";
     public static final String ov_voice_TABLE_translationed = "ov_translationed";
     public static final String ov_voice_TABLE_translation = "ov_translation";
     public static final String ov_voice_TABLE_datetime = "ov_datetime";
+
+
+
+    public static final String emergency_TABLE = "emergency";
+    public static final String emergency_TABLE_id="e_id";
+    public static final String emergency_TABLE_name="e_name";
+    public static final String emergency_TABLE_nickName="e_nickName";
+    public static final String emergency_TABLE_phone="e_phone";
+
+
+
+
+
+
+
+
 
 
     public DBHelper(Context context) {
@@ -73,6 +89,12 @@ public class DBHelper extends SQLiteOpenHelper {
             + ov_voice_TABLE_translationed + " TEXT, "
             + ov_voice_TABLE_datetime + " TEXT "
             + ");";
+    private static final String SQL_CREATE_TABLE_emergency = "CREATE TABLE " + emergency_TABLE + "("
+            + emergency_TABLE_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + emergency_TABLE_name + " TEXT, "
+            + emergency_TABLE_nickName + " TEXT, "
+            + emergency_TABLE_phone + " TEXT "
+            + ");";
 
 
     @Override
@@ -81,6 +103,8 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_personalInformation);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_voice);
         sqLiteDatabase.execSQL(SQL_CREATE_TABLE_onlineVoice);
+        sqLiteDatabase.execSQL(SQL_CREATE_TABLE_emergency);
+
     }
 
     @Override
@@ -89,6 +113,7 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + personalInformation_TABLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + onlineVoice_TABLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + voice_TABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + emergency_TABLE);
         onCreate(sqLiteDatabase);
     }
 

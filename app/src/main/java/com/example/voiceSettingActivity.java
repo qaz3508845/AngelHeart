@@ -15,15 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.DataBase.DBHelper;
-import com.example.DataBase.personalInformationDAO;
 import com.example.DataBase.voiceDAO;
-import com.example.ShowViewList.Show;
-import com.example.ShowViewList.ShowItem;
-import com.example.ShowViewList.myAdapter;
 import com.example.ShowVoiceListView.voiceAdapter;
 import com.example.ShowVoiceListView.voiceItem;
 
