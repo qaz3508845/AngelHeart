@@ -169,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onStop() {
-        marker.remove();
+//        marker.remove();
         mGoogleApiClient.disconnect();
         super.onStop();
     }

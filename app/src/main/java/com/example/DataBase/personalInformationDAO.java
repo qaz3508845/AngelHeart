@@ -112,7 +112,7 @@ public class personalInformationDAO {
 //                        ,DBHelper.personalInformation_TABLE_account,DBHelper.personalInformation_TABLE_password
 //                        ,DBHelper.personalInformation_TABLE_address,DBHelper.personalInformation_TABLE_datetime
 //                }
-        Cursor cursor = database.query(DBHelper.personalInformation_TABLE, new String[]{
+            Cursor cursor = database.query(DBHelper.personalInformation_TABLE, new String[]{
                         DBHelper.personalInformation_TABLE_id
                 ,DBHelper.personalInformation_TABLE_name
                         , DBHelper.personalInformation_TABLE_phone
