@@ -32,6 +32,7 @@
         android:text="TextView" />
 
     <Button
+        android:background="@drawable/button_border"
         android:id="@+id/newsBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -40,6 +41,7 @@
         android:text="訊息" />
 
     <Button
+        android:background="@drawable/button_border"
         android:id="@+id/telephoneBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -48,6 +50,7 @@
         android:text="撥打" />
 
     <Button
+        android:background="@drawable/button_border"
         android:id="@+id/deleteBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"

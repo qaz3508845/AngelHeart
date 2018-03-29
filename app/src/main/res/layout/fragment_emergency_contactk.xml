@@ -21,6 +21,8 @@
             android:layout_alignParentTop="true" />
 
         <Button
+            android:textSize="20dp"
+            android:background="@drawable/button_border"
             android:id="@+id/addEmergency_Btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
