@@ -119,7 +119,7 @@ public class viewPagerMainFragment extends Fragment {
         // 设置Tab Indicator的颜色
         tabs.setIndicatorColor(Color.parseColor("#d83737"));//#d83737   #d83737(绿)
         // 设置选中Tab文字的颜色 (这是我自定义的一个方法)
-        tabs.setTextColor(Color.parseColor("#fcd0d0"));
+        tabs.setTextColor(Color.parseColor("#880000"));
         // 取消点击Tab时的背景色
         tabs.setTabBackground(0);
     }

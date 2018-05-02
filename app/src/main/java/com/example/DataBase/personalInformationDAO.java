@@ -36,7 +36,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class personalInformationDAO {
-    public static final String TAG = "registeredDAO";
+    public static final String TAG = "personalInformationDAO";
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;

@@ -3,12 +3,14 @@ package com.example.ShowEmergencyListView;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.DataBase.emergencyDAO;
 import com.example.R;
@@ -81,6 +84,34 @@ public class emergencyAdapter extends BaseAdapter {
         holder.telephoneName.setText(vItem.getPhone());
         holder.emergencyName.setText(vItem.getName());
         holder.emergencyNickName.setText(vItem.getNickName());
+
+
+        holder.newsBtn.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                SmsManager smsManager = SmsManager.getDefault();
+                try{
+
+                    if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions((Activity) mContext,
+                                new String[]{Manifest.permission.SEND_SMS},
+                                1);
+                    }else{
+                        smsManager.sendTextMessage(holder.telephoneName.getText().toString(),
+                                null, "天使之音緊急聯絡,此用戶發生問題" +
+                                        "請盡快聯絡,確保用戶安全",
+                                PendingIntent.getBroadcast(view.getContext(), 0,new Intent(), 0),
+                                null);
+
+                        Toast.makeText(mContext, "已經發送訊息給緊急聯絡人", Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                };
+            }
+        });
 
         holder.telephoneBtn.setOnClickListener(new View.OnClickListener() {
 

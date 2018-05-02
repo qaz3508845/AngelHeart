@@ -14,14 +14,16 @@
         android:layout_height="50dp"
 
         android:layout_above="@+id/login_Btn"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/allbutton"
+
+        android:layout_alignStart="@+id/login_Btn"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/button_border"
         android:onClick="registeredBtnClick"
-        android:shadowColor="#2A11A8"
-        android:shadowRadius="25"
         android:text="註冊"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        android:textSize="20dp" />
     <TextView
+        android:textSize="20dp"
         android:id="@+id/name_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +33,7 @@
         android:text="@string/str_Name_Txv" />
 
     <EditText
+        android:textSize="20dp"
         android:id="@+id/name_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,17 +44,20 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:inputType="textPersonName" />
+
     <TextView
         android:id="@+id/account_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/phone_Edt"
-        android:layout_marginEnd="14dp"
-        android:layout_marginTop="24dp"
-        android:layout_toStartOf="@+id/registered_Btn"
-        android:text="@string/str_Account_Txv" />
+        android:layout_marginEnd="27dp"
+        android:layout_marginTop="18dp"
+        android:layout_toStartOf="@+id/textView3"
+        android:text="@string/str_Account_Txv"
+        android:textSize="20dp" />
 
     <TextView
+        android:textSize="20dp"
         android:id="@+id/password_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,6 +67,7 @@
         android:text="@string/str_Password_Txv" />
 
     <EditText
+        android:textSize="20dp"
         android:id="@+id/account_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +80,7 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:textSize="20dp"
         android:id="@+id/password_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,6 +92,7 @@
         android:inputType="textPassword" />
 
     <TextView
+        android:textSize="20dp"
         android:id="@+id/phone_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,6 +102,7 @@
         android:text="@string/str_Phone_Txv" />
 
     <EditText
+        android:textSize="20dp"
         android:id="@+id/phone_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,20 +117,21 @@
         android:id="@+id/login_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
-
-
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
 
-        android:background="@drawable/allbutton"
+
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginBottom="38dp"
+        android:background="@drawable/button_border"
+
         android:onClick="loginBtnOnClick"
-        android:shadowColor="#2A11A8"
-        android:shadowRadius="25"
         android:text="回到登入"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000000"
+        android:textSize="20dp" />
 
     <TextView
+        android:textSize="20dp"
         android:id="@+id/confirmPassword_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,6 +141,7 @@
         android:text="@string/str_ConfirmPassword_Txv" />
 
     <EditText
+        android:textSize="20dp"
         android:id="@+id/confirmPassword_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,12 +157,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/account_Txv"
-        android:text="@string/str_Registered_Btn" />
+        android:layout_alignStart="@+id/registered_Btn"
+        android:text=""
+        android:textSize="20dp" />
 
 
 
     <TextView
+        android:textSize="20dp"
         android:id="@+id/address_Txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,6 +174,7 @@
         android:text="@string/str_address_Txv" />
 
     <EditText
+        android:textSize="20dp"
         android:id="@+id/address_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
