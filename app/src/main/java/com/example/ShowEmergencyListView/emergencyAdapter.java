@@ -108,8 +108,9 @@ public class emergencyAdapter extends BaseAdapter {
                     }
 
                 }catch(Exception e){
+                    Toast.makeText(mContext, "發生錯誤,請檢察電話號碼有無正確", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                };
+                }
             }
         });
 
