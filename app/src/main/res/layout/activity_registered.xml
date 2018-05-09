@@ -10,10 +10,6 @@
 
     <Button
         android:textColor="#f2746b"
-        android:shadowColor="#000"
-        android:shadowRadius="1"
-        android:shadowDx="1"
-        android:shadowDy="1"
         android:id="@+id/registered_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
@@ -119,10 +115,6 @@
 
     <Button
         android:textColor="#f2746b"
-        android:shadowColor="#000"
-        android:shadowRadius="1"
-        android:shadowDx="1"
-        android:shadowDy="1"
         android:id="@+id/login_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"

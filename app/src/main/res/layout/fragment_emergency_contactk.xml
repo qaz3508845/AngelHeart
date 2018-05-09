@@ -45,7 +45,7 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:background="@drawable/bamows" />
+                        android:background="@drawable/bamow" />
 
                 </LinearLayout>
 
@@ -119,7 +119,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/circular"
                     android:text="資料設定"
-                    android:textColor="#556b2f"
                     android:textSize="25dp" />
 
                 <Button
@@ -129,7 +128,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/circular"
                     android:text="目前位置"
-                    android:textColor="#556b2f"
                     android:textSize="25dp" />
 
             </LinearLayout>

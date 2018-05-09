@@ -14,7 +14,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="55dip"
-            android:background="#97d6b0"/>
+            android:background="#9bdada"/>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
