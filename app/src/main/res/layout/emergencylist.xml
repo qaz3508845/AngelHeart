@@ -33,6 +33,7 @@
         android:text="TextView" />
 
     <Button
+        android:background="@drawable/button_border"
         android:id="@+id/newsBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -49,6 +50,7 @@
         android:textSize="20dp" />
 
     <Button
+        android:background="@drawable/button_border"
         android:id="@+id/telephoneBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -61,6 +63,7 @@
         android:textSize="20dp" />
 
     <Button
+        android:background="@drawable/button_border"
         android:id="@+id/deleteBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
