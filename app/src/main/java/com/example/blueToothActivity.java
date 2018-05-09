@@ -55,6 +55,7 @@ public class blueToothActivity extends AppCompatActivity {
     Button btnSend, resetBtn;
     String phoneNumber;
     emergencyDAO db;
+    static MediaPlayer mMediaPlayer;
 
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
@@ -85,6 +86,9 @@ public class blueToothActivity extends AppCompatActivity {
                 }
                 if (myThreadConnected != null) {
                     myThreadConnected.cancel();
+                }
+                if(mMediaPlayer!=null){
+                    mMediaPlayer.release();
                 }
 //                inputPane.setVisibility(View.INVISIBLE);
                 setup();
@@ -147,7 +151,7 @@ public class blueToothActivity extends AppCompatActivity {
     private void setup() {
         Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
-            pairedDeviceArrayList = new ArrayList<BluetoothDevice>();
+            pairedDeviceArrayList = new ArrayList();
 
             for (BluetoothDevice device : pairedDevices) {
                 pairedDeviceArrayList.add(device);
@@ -164,15 +168,16 @@ public class blueToothActivity extends AppCompatActivity {
                                         int position, long id) {
                     BluetoothDevice device =
                             (BluetoothDevice) parent.getItemAtPosition(position);
-                    Toast.makeText(blueToothActivity.this,
-                            "Name: " + device.getName() + "\n"
-                                    + "Address: " + device.getAddress() + "\n"
-                                    + "BondState: " + device.getBondState() + "\n"
-                                    + "BluetoothClass: " + device.getBluetoothClass() + "\n"
-                                    + "Class: " + device.getClass(),
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(blueToothActivity.this,
+//                            "Name: " + device.getName() + "\n"
+//                                    + "Address: " + device.getAddress() + "\n"
+//                                    + "BondState: " + device.getBondState() + "\n"
+//                                    + "BluetoothClass: " + device.getBluetoothClass() + ""
+//                                    ,
+//                            Toast.LENGTH_LONG).show();
 
-                    textStatus.setText("start ThreadConnectBTdevice");
+//                    textStatus.setText("start ThreadConnectBTdevice");
+                    Toast.makeText(blueToothActivity.this,"連接:"+device.getName(),Toast.LENGTH_LONG).show();
                     myThreadConnectBTdevice = new ThreadConnectBTdevice(device);
                     myThreadConnectBTdevice.start();
                 }
@@ -183,7 +188,9 @@ public class blueToothActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        if(mMediaPlayer!=null){
+            mMediaPlayer.release();
+        }
 //        if (myThreadConnectBTdevice != null) {
 //            myThreadConnectBTdevice.cancel();
 //        }
@@ -226,7 +233,8 @@ public class blueToothActivity extends AppCompatActivity {
 
             try {
                 bluetoothSocket = device.createRfcommSocketToServiceRecord(myUUID);
-                textStatus.setText("bluetoothSocket: \n" + bluetoothSocket);
+//                textStatus.setText("bluetoothSocket: \n" + bluetoothSocket);
+                Toast.makeText(blueToothActivity.this,"連線中",Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -241,13 +249,14 @@ public class blueToothActivity extends AppCompatActivity {
                 success = true;
             } catch (IOException e) {
                 e.printStackTrace();
-
+                Toast.makeText(blueToothActivity.this,"連線時有東西出錯了",Toast.LENGTH_LONG).show();
                 final String eMessage = e.getMessage();
                 runOnUiThread(new Runnable() {
 
                     @Override
                     public void run() {
-                        textStatus.setText("something wrong bluetoothSocket.connect(): \n" + eMessage);
+//                        textStatus.setText("something wrong bluetoothSocket.connect(): \n" + eMessage);
+//                        Toast.makeText(blueToothActivity.this,"連線時有東西出錯了",Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -269,8 +278,8 @@ public class blueToothActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        textStatus.setText(msgconnected);
-
+//                        textStatus.setText(msgconnected);
+                        Toast.makeText(blueToothActivity.this,"連接成功",Toast.LENGTH_LONG).show();
 //                        listViewPairedDevice.setVisibility(View.GONE);
                         inputPane.setVisibility(View.VISIBLE);
                     }
@@ -369,7 +378,7 @@ public class blueToothActivity extends AppCompatActivity {
 //                                SoundPool spool = new SoundPool(1, AudioManager.STREAM_MUSIC, 5);
 //                                spool.load(this,)
 
-                                playMedai();
+                                playMedia();
 
 //                                SoundPool spool = new SoundPool(10, AudioManager.STREAM_MUSIC, 5);;
 //                                int sourceid=spool.load(this, R.raw.harm, 1);
@@ -378,7 +387,7 @@ public class blueToothActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(blueToothActivity.this, msgReceived, Toast.LENGTH_LONG).show();
                             }
-                            textStatus.setText(msgReceived);
+//                            textStatus.setText(msgReceived);
                         }
                     });
 
@@ -392,19 +401,20 @@ public class blueToothActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-                            Toast.makeText(blueToothActivity.this, "連線錯誤", Toast.LENGTH_LONG).show();
-
-                            textStatus.setText(msgConnectionLost);
+//                            Toast.makeText(blueToothActivity.this, "連線錯誤", Toast.LENGTH_LONG).show();
+                            Toast.makeText(blueToothActivity.this,"請重按一次連線試試看",Toast.LENGTH_LONG).show();
+//                            textStatus.setText(msgConnectionLost);
                         }
                     });
                     break;
                 }
             }
         }
-        public void playMedai(){
+        public void playMedia(){
             try {
                 Uri alert =  RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-                final MediaPlayer mMediaPlayer = new MediaPlayer();
+               mMediaPlayer = new MediaPlayer();
+                startActivity(new Intent(blueToothActivity.this,MediaPlayActivity.class));
                 mMediaPlayer.setDataSource(blueToothActivity.this, alert);
                 final AudioManager audioManager = (AudioManager) getSystemService(blueToothActivity.this.AUDIO_SERVICE);
                 if (audioManager.getStreamVolume(AudioManager.STREAM_RING) != 0) {
@@ -416,19 +426,19 @@ public class blueToothActivity extends AppCompatActivity {
                 }
                 AudioManager mger=(AudioManager) getSystemService(AUDIO_SERVICE);;
                 mger.setStreamVolume(AudioManager.STREAM_MUSIC, mger.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
-                new CountDownTimer(15000,1000){
-
-                    @Override
-                    public void onFinish() {
-                        mMediaPlayer.stop();
-
-                    }
-
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                    }
-
-                }.start();
+//                new CountDownTimer(15000,1000){
+//
+//                    @Override
+//                    public void onFinish() {
+//                        mMediaPlayer.stop();
+//
+//                    }
+//
+//                    @Override
+//                    public void onTick(long millisUntilFinished) {
+//                    }
+//
+//                }.start();
             } catch(Exception e) {
 
             }
