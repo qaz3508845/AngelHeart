@@ -14,17 +14,19 @@
         app:srcCompat="@drawable/angel" />
 
     <TextView
+        android:textColor="#000"
         android:id="@+id/emergencyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/emergencyImg"
         android:text="TextView"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold" />
 
     <TextView
-        android:textSize="20dp"
+        android:textColor="#000"
+        android:textSize="18dp"
         android:id="@+id/emergencyNickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,35 +38,32 @@
         android:id="@+id/newsBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignBaseline="@+id/deleteBtn"
-        android:layout_alignBottom="@+id/deleteBtn"
+        android:layout_alignBaseline="@+id/emergencyNickName"
+        android:layout_alignBottom="@+id/emergencyNickName"
         android:layout_toStartOf="@+id/telephoneBtn"
         android:background="@drawable/circular"
-        android:shadowColor="#000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1"
         android:text="訊息"
-        android:textColor="#556b2f"
+        android:textColor="#000"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/telephoneBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignBaseline="@+id/deleteBtn"
-        android:layout_alignBottom="@+id/deleteBtn"
+        android:layout_alignBaseline="@+id/emergencyNickName"
+        android:layout_alignBottom="@+id/emergencyNickName"
         android:layout_toStartOf="@+id/deleteBtn"
         android:background="@drawable/circular"
         android:text="撥打"
-        android:textColor="#556b2f"
+        android:textColor="#5da725"
         android:textSize="20dp" />
 
     <Button
         android:id="@+id/deleteBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/telephoneName"
+        android:layout_alignBaseline="@+id/emergencyNickName"
+        android:layout_alignBottom="@+id/emergencyNickName"
         android:layout_alignParentEnd="true"
         android:background="@drawable/circular"
         android:text="刪除"
@@ -72,7 +71,8 @@
         android:textSize="20dp" />
 
     <TextView
-        android:textSize="20dp"
+        android:textColor="#000"
+        android:textSize="18dp"
         android:id="@+id/telephoneName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

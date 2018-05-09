@@ -9,6 +9,7 @@
 
 
     <EditText
+        android:textColor="#000"
         android:textSize="25dp"
         android:id="@+id/emergencyNameEdt"
         android:layout_width="match_parent"
@@ -18,6 +19,7 @@
         android:inputType="textPersonName" />
 
     <EditText
+        android:textColor="#000"
         android:textSize="25dp"
         android:id="@+id/emergencyNickNameEdt"
         android:layout_width="match_parent"
@@ -27,11 +29,13 @@
         android:inputType="textPersonName" />
 
     <EditText
+
+        android:textColor="#000"
         android:textSize="25dp"
         android:id="@+id/emergencyPhoneEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/str_Phone_Btn_Hint"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 </LinearLayout>

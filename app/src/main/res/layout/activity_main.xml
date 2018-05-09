@@ -16,13 +16,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
 
-        android:background="@drawable/button_border"
+        android:background="@drawable/circular"
 
         android:onClick="loginOnClick"
-        android:shadowColor="#000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1"
         android:text="@string/str_Login_Btn"
         android:textColor="#f2746b"
         android:textSize="35dp"
@@ -38,12 +34,8 @@
 
         android:layout_below="@+id/login_Btn"
         android:layout_marginTop="17dp"
-        android:background="@drawable/button_border"
+        android:background="@drawable/circular"
         android:onClick="registerOnClick"
-        android:shadowColor="#000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1"
         android:text="@string/str_Registered_Btn"
         android:textColor="#f2746b"
         android:textSize="35dp"
