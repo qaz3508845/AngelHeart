@@ -8,7 +8,13 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.media.SoundPool;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,7 +52,7 @@ public class blueToothActivity extends AppCompatActivity {
     ListView listViewPairedDevice;
     LinearLayout inputPane;
     EditText inputField;
-    Button btnSend;
+    Button btnSend, resetBtn;
     String phoneNumber;
     emergencyDAO db;
 
@@ -70,6 +76,21 @@ public class blueToothActivity extends AppCompatActivity {
         inputPane = (LinearLayout) findViewById(R.id.B_inputpane);
         inputField = (EditText) findViewById(R.id.B_input);
 
+        resetBtn = (Button) findViewById(R.id.resetBtn);
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (myThreadConnectBTdevice != null) {
+                    myThreadConnectBTdevice.cancel();
+                }
+                if (myThreadConnected != null) {
+                    myThreadConnected.cancel();
+                }
+//                inputPane.setVisibility(View.INVISIBLE);
+                setup();
+            }
+        });
+
         btnSend = (Button) findViewById(R.id.B_send);
         btnSend.setOnClickListener(new Button.OnClickListener() {
 
@@ -81,6 +102,7 @@ public class blueToothActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
             Toast.makeText(this,
@@ -105,8 +127,6 @@ public class blueToothActivity extends AppCompatActivity {
         String stInfo = bluetoothAdapter.getName() + "\n" +
                 bluetoothAdapter.getAddress();
         textInfo.setText(stInfo);
-
-
 
 
     }
@@ -164,9 +184,9 @@ public class blueToothActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        if (myThreadConnectBTdevice != null) {
-            myThreadConnectBTdevice.cancel();
-        }
+//        if (myThreadConnectBTdevice != null) {
+//            myThreadConnectBTdevice.cancel();
+//        }
     }
 
     @Override
@@ -251,7 +271,7 @@ public class blueToothActivity extends AppCompatActivity {
                     public void run() {
                         textStatus.setText(msgconnected);
 
-                        listViewPairedDevice.setVisibility(View.GONE);
+//                        listViewPairedDevice.setVisibility(View.GONE);
                         inputPane.setVisibility(View.VISIBLE);
                     }
                 });
@@ -306,6 +326,9 @@ public class blueToothActivity extends AppCompatActivity {
             connectedOutputStream = out;
         }
 
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone ringTone = RingtoneManager.getRingtone(getApplicationContext(), notification);
+
         @Override
         public void run() {
             byte[] buffer = new byte[1024];
@@ -330,7 +353,7 @@ public class blueToothActivity extends AppCompatActivity {
                                 ArrayList<emergencyItem> itemArrayList = new ArrayList<>();
                                 Cursor cursor = db.getAllData();
                                 cursor.moveToFirst();
-                                phoneNumber=cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_phone));
+                                phoneNumber = cursor.getString(cursor.getColumnIndex(DBHelper.emergency_TABLE_phone));
 
                                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
                                 if (ActivityCompat.checkSelfPermission(blueToothActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -342,6 +365,15 @@ public class blueToothActivity extends AppCompatActivity {
                                 }
 
                             } else if (strReceived.equals("2")) {
+
+//                                SoundPool spool = new SoundPool(1, AudioManager.STREAM_MUSIC, 5);
+//                                spool.load(this,)
+
+                                playMedai();
+
+//                                SoundPool spool = new SoundPool(10, AudioManager.STREAM_MUSIC, 5);;
+//                                int sourceid=spool.load(this, R.raw.harm, 1);
+
 
                             } else {
                                 Toast.makeText(blueToothActivity.this, msgReceived, Toast.LENGTH_LONG).show();
@@ -369,7 +401,35 @@ public class blueToothActivity extends AppCompatActivity {
                 }
             }
         }
+        public void playMedai(){
+            try {
+                Uri alert =  RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                final MediaPlayer mMediaPlayer = new MediaPlayer();
+                mMediaPlayer.setDataSource(blueToothActivity.this, alert);
+                final AudioManager audioManager = (AudioManager) getSystemService(blueToothActivity.this.AUDIO_SERVICE);
+                if (audioManager.getStreamVolume(AudioManager.STREAM_RING) != 0) {
+                    mMediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
+                    mMediaPlayer.setLooping(true);
+                    mMediaPlayer.prepare();
+                    mMediaPlayer.start();
+                }
+                new CountDownTimer(10000,1000){
 
+                    @Override
+                    public void onFinish() {
+                        mMediaPlayer.stop();
+
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                    }
+
+                }.start();
+            } catch(Exception e) {
+
+            }
+        }
         public void write(byte[] buffer) {
             try {
                 connectedOutputStream.write(buffer);

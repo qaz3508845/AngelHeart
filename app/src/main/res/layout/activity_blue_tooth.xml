@@ -10,6 +10,13 @@
         android:textStyle="bold|italic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/resetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重設藍芽" />
+
     <TextView
         android:id="@+id/B_status"
         android:textSize="28sp"
