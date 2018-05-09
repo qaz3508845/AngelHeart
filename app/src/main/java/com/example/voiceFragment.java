@@ -166,6 +166,19 @@ public class voiceFragment extends Fragment {
         });
 
 
+        Button blueToothBtn = (Button)view.findViewById(R.id.blueToothBtn);
+        blueToothBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), blueToothActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
 
