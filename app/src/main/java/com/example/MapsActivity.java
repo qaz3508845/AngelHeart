@@ -16,15 +16,19 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener ,LocationListener {
 
@@ -38,7 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     private static final int REQUEST_LOCATION = 2;
-    private GoogleMap mMap;
+    GoogleMap mMap;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -66,8 +70,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //自定義位置變動方法
     private void createLocationRequest() {
         locationRequest = new LocationRequest();
-        locationRequest.setInterval(5000); //更新間隔5000毫秒
-        locationRequest.setFastestInterval(2000); //最短間隔2000毫秒
+        locationRequest.setInterval(10000); //更新間隔5000毫秒
+        locationRequest.setFastestInterval(5000); //最短間隔2000毫秒
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
@@ -108,6 +112,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.getUiSettings().setZoomControlsEnabled(true); //啟用縮放控制鍵
+        mMap.getUiSettings().setTiltGesturesEnabled(true);//啟用傾斜手勢
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);//設定地圖類型
     }
 
     @SuppressLint("MissingPermission")
@@ -146,13 +152,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             latitude =location.getLatitude();
             longitude =location.getLongitude();
             sydney = new LatLng(latitude, longitude);
-            marker = mMap.addMarker(new MarkerOptions().position(sydney).title("我目前的位置(經度,緯度)").snippet(latitude+","+longitude));
+            marker = mMap.addMarker(new MarkerOptions().position(sydney).title("").snippet(""));
             marker.showInfoWindow();
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                    sydney,15));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(17.0f).bearing(300).tilt(0).build();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+
+
+
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+                @Override
+                public View getInfoWindow(Marker marker) {
+                    return null;
+                }
+
+                @Override
+                public View getInfoContents(Marker marker) {
+                    View v = getLayoutInflater().inflate(R.layout.activity_marker, null);
+                    TextView textView = (TextView) v.findViewById(R.id.text);
+                    textView.setSelected(true);
+                    textView.setText("我的目前位置(經度,緯度)\n"+latitude+" , "+longitude);
+                    return v;
+                }
+            });
+
+
+            mMap.animateCamera(cameraUpdate,2000,null);
 
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,locationRequest,this);
+
 
         }
     }
@@ -169,7 +198,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onStop() {
-//        marker.remove();
         mGoogleApiClient.disconnect();
         super.onStop();
     }
@@ -194,12 +222,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         longitude = location.getLongitude();
 
         sydney = new LatLng(latitude, longitude);
-        marker = mMap.addMarker(new MarkerOptions().position(sydney).title("我目前的位置(經度,緯度)").snippet(latitude+","+longitude));
+        marker = mMap.addMarker(new MarkerOptions().position(sydney).title("").snippet(""));
         marker.showInfoWindow();
+
+        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+                View v = getLayoutInflater().inflate(R.layout.activity_marker, null);
+                TextView textView = (TextView) v.findViewById(R.id.text);
+                textView.setSelected(true);
+                textView.setText("我的目前位置(經度,緯度)\n"+latitude+" , "+longitude);
+                return v;
+            }
+        });
 
         Log.e("LOCATION",latitude+","+longitude);
 
 //        mMap.animateCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
+
+
 }

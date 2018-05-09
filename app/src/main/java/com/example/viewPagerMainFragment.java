@@ -107,21 +107,22 @@ public class viewPagerMainFragment extends Fragment {
      */
     private void setTabsValue() {
         // 设置Tab是自动填充满屏幕的
-        tabs.setShouldExpand(true);
+//        tabs.setShouldExpand(true);
         // 设置Tab的分割线是透明的
         tabs.setDividerColor(Color.TRANSPARENT);
         // 设置Tab底部线的高度
         tabs.setUnderlineHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, dm));
         // 设置Tab Indicator的高度
-        tabs.setIndicatorHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, dm));
+        tabs.setIndicatorHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, dm));
         // 设置Tab标题文字的大小
-        tabs.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 23, dm));
+        tabs.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 30, dm));
         // 设置Tab Indicator的颜色
         tabs.setIndicatorColor(Color.parseColor("#d83737"));//#d83737   #d83737(绿)
         // 设置选中Tab文字的颜色 (这是我自定义的一个方法)
         tabs.setTextColor(Color.parseColor("#000000"));
         // 取消点击Tab时的背景色
         tabs.setTabBackground(0);
+
 
 
 

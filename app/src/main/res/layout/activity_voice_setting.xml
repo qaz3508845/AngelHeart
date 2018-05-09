@@ -10,9 +10,12 @@
 
 
     <ListView
+        android:layout_margin="1dp"
+        android:padding="1dp"
+        android:background="@drawable/button_border"
         android:id="@+id/voice_Lv"
         android:layout_width="match_parent"
-        android:layout_height="470dp" />
+        android:layout_height="490dp" />
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -22,17 +25,14 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:textColor="#f2746b"
-            android:shadowColor="#000"
-            android:shadowRadius="1"
-            android:shadowDx="1"
-            android:shadowDy="1"
+            android:textSize="40dp"
+            android:text="+"
+            android:textColor="#000"
             android:id="@+id/addVoice_Btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/add"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/circular"
             android:onClick="addVoiceBtnOnClick"
-            android:textSize="50dp"
             />
 
     </LinearLayout>

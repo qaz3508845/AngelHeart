@@ -33,6 +33,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textColor="#000"
                 android:id="@+id/translationed_Txv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +53,7 @@
             <Button
                 android:layout_margin="20dp"
                 android:layout_weight="1"
-                android:textColor="#f2746b"
+                android:textColor="#000"
                 android:background="@drawable/circular"
                 android:id="@+id/setting_Btn"
                 android:layout_width="wrap_content"
