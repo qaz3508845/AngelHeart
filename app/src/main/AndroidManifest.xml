@@ -94,7 +94,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".addEmergencyInformation" />
-        <activity android:name=".blueToothActivity"></activity>
+        <activity android:name=".blueToothActivity" />
+        <activity android:name=".MediaPlayActivity"></activity>
     </application>
 
 </manifest>

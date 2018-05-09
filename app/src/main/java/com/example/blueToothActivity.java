@@ -412,8 +412,11 @@ public class blueToothActivity extends AppCompatActivity {
                     mMediaPlayer.setLooping(true);
                     mMediaPlayer.prepare();
                     mMediaPlayer.start();
+
                 }
-                new CountDownTimer(10000,1000){
+                AudioManager mger=(AudioManager) getSystemService(AUDIO_SERVICE);;
+                mger.setStreamVolume(AudioManager.STREAM_MUSIC, mger.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+                new CountDownTimer(15000,1000){
 
                     @Override
                     public void onFinish() {
