@@ -36,10 +36,10 @@ public class viewPagerMainFragment extends Fragment {
      */
     private DisplayMetrics dm;
 
-    private personalInformationFragment personalInformationFragment;
+//    private personalInformationFragment personalInformationFragment;
     private voiceFragment voiceFragment;
     private emergencyContactkFragment emergencyContactkFragment;
-    private mapViewFragment mapViewFragment;
+//    private mapViewFragment mapViewFragment;
     /*
      *
      */
@@ -113,15 +113,18 @@ public class viewPagerMainFragment extends Fragment {
         // 设置Tab底部线的高度
         tabs.setUnderlineHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, dm));
         // 设置Tab Indicator的高度
-        tabs.setIndicatorHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, dm));
+        tabs.setIndicatorHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, dm));
         // 设置Tab标题文字的大小
-        tabs.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 18, dm));
+        tabs.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 23, dm));
         // 设置Tab Indicator的颜色
         tabs.setIndicatorColor(Color.parseColor("#d83737"));//#d83737   #d83737(绿)
         // 设置选中Tab文字的颜色 (这是我自定义的一个方法)
-        tabs.setTextColor(Color.parseColor("#fcd0d0"));
+        tabs.setTextColor(Color.parseColor("#000000"));
         // 取消点击Tab时的背景色
         tabs.setTabBackground(0);
+
+
+
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
@@ -130,7 +133,8 @@ public class viewPagerMainFragment extends Fragment {
             super(fm);
         }
 
-        private final String[] titles = { "個人資料", "語音辨識", "緊急聯絡人" ,"地圖定位"};
+//        private final String[] titles = { "個人資料", "語音辨識", "緊急聯絡人" ,"地圖定位"};
+        private final String[] titles = { "緊急聯絡人", "語音辨識"};
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -146,25 +150,15 @@ public class viewPagerMainFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    if (personalInformationFragment == null) {
-                        personalInformationFragment = new personalInformationFragment();
+                    if (emergencyContactkFragment == null) {
+                        emergencyContactkFragment = new emergencyContactkFragment();
                     }
-                    return personalInformationFragment;
+                    return emergencyContactkFragment;
                 case 1:
                     if (voiceFragment == null) {
                         voiceFragment = new voiceFragment();
                     }
                     return voiceFragment;
-                case 2:
-                    if (emergencyContactkFragment == null) {
-                        emergencyContactkFragment = new emergencyContactkFragment();
-                    }
-                    return emergencyContactkFragment;
-                case 3:
-                    if (mapViewFragment == null) {
-                        mapViewFragment = new mapViewFragment();
-                    }
-                    return mapViewFragment;
                 default:
                     return null;
             }

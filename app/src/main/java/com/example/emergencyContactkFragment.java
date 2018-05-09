@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.DataBase.DBHelper;
@@ -53,6 +55,11 @@ public class emergencyContactkFragment extends Fragment {
     emergencyItem eItem;
     Button addEmergencyBtn, editEmergencyBtn;
     emergencyDAO db;
+
+    personalInformationDAO p_db;
+    TextView name2;
+    TextView phone2;
+    TextView address2;
 
     public emergencyContactkFragment() {
         // Required empty public constructor
@@ -97,6 +104,86 @@ public class emergencyContactkFragment extends Fragment {
     public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //地圖按鈕
+        Button m_btn = (Button)view.findViewById(R.id.maps_btn);
+        m_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(getContext(),MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //以下個人資料
+        p_db=new personalInformationDAO(getContext());
+        name2=(TextView)view.findViewById(R.id.name2_Txv);
+        phone2=(TextView)view.findViewById(R.id.phone2_Txv);
+        address2=(TextView)view.findViewById(R.id.address2_Txv);
+        Cursor p_cursor=p_db.getAllData();
+        p_cursor.moveToFirst();
+        while (!p_cursor.isAfterLast()){
+//            Log.w("personalInformation",cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_name))+"");
+            name2.setText(Html.fromHtml(p_cursor.getString(p_cursor.getColumnIndex(DBHelper.personalInformation_TABLE_name))));
+            phone2.setText(Html.fromHtml(p_cursor.getString(p_cursor.getColumnIndex(DBHelper.personalInformation_TABLE_phone))));
+            address2.setText(Html.fromHtml(p_cursor.getString(p_cursor.getColumnIndex(DBHelper.personalInformation_TABLE_address))));
+            p_cursor.moveToNext();
+        }
+
+        Button btn = (Button)view.findViewById(R.id.personalSet_Btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                final View item= LayoutInflater.from(getContext()).inflate(R.layout.activity_set_personal_information,null);
+
+                //彈出框
+                new AlertDialog.Builder(getContext())
+                        .setTitle("輸入你的個人資料")//標題顯示列
+                        .setView(item)
+                        //確定按鈕
+                        .setPositiveButton("確定輸入", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                EditText nameEdt = (EditText) item.findViewById(R.id.nameEdt);
+                                EditText phoneEdt=(EditText)item.findViewById(R.id.phoneEdt);
+                                EditText addressEdt=(EditText)item.findViewById(R.id.addressEdt);
+                                String name = nameEdt.getText().toString();
+                                String phone = phoneEdt.getText().toString();
+                                String address=addressEdt.getText().toString();
+                                if(TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(address)){
+                                    //無輸入時顯示
+                                    Toast.makeText(getContext(), "資料輸入不完全,請確認資料", Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    ShowItem showItem=new ShowItem();
+                                    showItem.setP_name(name);
+                                    showItem.setP_phone(phone);
+                                    showItem.setP_address(address);
+//                            showItem.setP_password("");
+//                            showItem.setP_account("");
+//                            showItem.setP_id(0);
+//                            showItem.setP_datetime("");
+                                    p_db.deleteInformation();
+                                    p_db.insertPersonalInformation(showItem);
+                                    name2.setText(Html.fromHtml(nameEdt.getText().toString()));
+                                    phone2.setText(Html.fromHtml(phoneEdt.getText().toString()));
+                                    address2.setText(Html.fromHtml(addressEdt.getText().toString()));
+
+                                }
+
+                            }
+                        })
+                        .show();
+
+            }
+        });
+
+
+        //以下為緊急連絡人
         addEmergencyBtn = (Button) view.findViewById(R.id.addEmergency_Btn);
         Lv = (ListView) view.findViewById(R.id.emergency_Lv);
         db = new emergencyDAO(getContext());

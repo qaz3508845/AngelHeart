@@ -12,34 +12,41 @@
         android:id="@+id/login_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
-
-
         android:layout_below="@+id/password_Edt"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="18dp"
 
         android:background="@drawable/button_border"
+
         android:onClick="loginOnClick"
+        android:shadowColor="#000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
         android:text="@string/str_Login_Btn"
-        android:textSize="20dp"
+        android:textColor="#f2746b"
+        android:textSize="35dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="236dp"
         tools:layout_editor_absoluteY="190dp" />
 
     <Button
-        android:background="@drawable/button_border"
         android:id="@+id/registered_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
+        android:layout_alignStart="@+id/login_Btn"
+
         android:layout_below="@+id/login_Btn"
-
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-
+        android:background="@drawable/button_border"
         android:onClick="registerOnClick"
-
+        android:shadowColor="#000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
         android:text="@string/str_Registered_Btn"
-        android:textSize="20dp"
+        android:textColor="#f2746b"
+        android:textSize="35dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="57dp"
         tools:layout_editor_absoluteY="190dp" />
@@ -71,22 +78,24 @@
         <!--tools:layout_editor_absoluteY="108dp" />-->
 
     <EditText
-        android:textSize="20dp"
         android:id="@+id/account_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="34dp"
         android:ems="10"
         android:hint="@string/str_Account_Edt_Hint"
         android:inputType="textPersonName"
+        android:textColor="#000d29"
+        android:textSize="30dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="49dp" />
 
     <EditText
-        android:textSize="20dp"
+        android:textColor="#000d29"
+        android:textSize="30dp"
         android:id="@+id/password_Edt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,6 +110,10 @@
         tools:layout_editor_absoluteY="95dp" />
 
     <TextView
+        android:shadowColor="#000000"
+        android:shadowRadius="2"
+        android:shadowDx="2"
+        android:shadowDy="2"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,7 +121,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="66dp"
         android:text="AngelHeart"
-        android:textSize="30dp" />
+        android:textColor="#f2746b"
+        android:textSize="65dp" />
 
     <!--<Button-->
         <!--android:id="@+id/clearTable_Btn"-->

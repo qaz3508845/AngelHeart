@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/FL"
     android:layout_width="match_parent"
@@ -8,29 +9,164 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_border"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/bamows" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/name_Txv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_Name_Txv"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/phone_Txv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_phone_Txv"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/address_Txv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_address_Txv"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name2_Txv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:id="@+id/phone2_Txv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/address2_Txv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttonLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/personalSet_Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circular"
+                    android:text="資料設定"
+                    android:textColor="#556b2f"
+                    android:textSize="25dp" />
+
+                <Button
+                    android:id="@+id/maps_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circular"
+                    android:text="目前位置"
+                    android:textColor="#556b2f"
+                    android:textSize="25dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/emergency_Lv"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true" />
+            android:layout_height="240dp"
+            android:layout_margin="1dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_border" />
 
-        <Button
-            android:textSize="20dp"
-            android:background="@drawable/button_border"
-            android:id="@+id/addEmergency_Btn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/emergency_Lv"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="49dp"
-            android:text="@string/str_Add_Btn" />
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/addEmergency_Btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/add"
+                android:gravity="center"
+                android:shadowColor="#000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="#f2746b"
+                android:textSize="40dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

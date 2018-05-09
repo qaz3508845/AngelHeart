@@ -146,7 +146,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             latitude =location.getLatitude();
             longitude =location.getLongitude();
             sydney = new LatLng(latitude, longitude);
-            marker = mMap.addMarker(new MarkerOptions().position(sydney).title("目前經緯度").snippet(latitude+","+longitude));
+            marker = mMap.addMarker(new MarkerOptions().position(sydney).title("我目前的位置(經度,緯度)").snippet(latitude+","+longitude));
             marker.showInfoWindow();
 //            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
@@ -169,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onStop() {
-        marker.remove();
+//        marker.remove();
         mGoogleApiClient.disconnect();
         super.onStop();
     }
@@ -181,6 +181,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
+    protected void onPause() {
+        marker.remove();
+        super.onPause();
+    }
+
+    @Override
     public void onLocationChanged(Location location) {
         marker.remove();
 
@@ -188,7 +194,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         longitude = location.getLongitude();
 
         sydney = new LatLng(latitude, longitude);
-        marker = mMap.addMarker(new MarkerOptions().position(sydney).title("目前經緯度").snippet(latitude+","+longitude));
+        marker = mMap.addMarker(new MarkerOptions().position(sydney).title("我目前的位置(經度,緯度)").snippet(latitude+","+longitude));
         marker.showInfoWindow();
 
         Log.e("LOCATION",latitude+","+longitude);

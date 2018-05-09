@@ -92,69 +92,69 @@ public class personalInformationFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        db=new personalInformationDAO(getContext());
-        name2=(TextView)view.findViewById(R.id.name2_Txv);
-        phone2=(TextView)view.findViewById(R.id.phone2_Txv);
-        address2=(TextView)view.findViewById(R.id.address2_Txv);
-        Cursor cursor=db.getAllData();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
-//            Log.w("personalInformation",cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_name))+"");
-            name2.setText(Html.fromHtml("<u>"+cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_name))+"</u>"));
-            phone2.setText(Html.fromHtml("<u>"+cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_phone))+"</u>"));
-            address2.setText(Html.fromHtml("<u>"+cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_address))+"</u>"));
-            cursor.moveToNext();
-        }
+//        db=new personalInformationDAO(getContext());
+//        name2=(TextView)view.findViewById(R.id.name2_Txv);
+//        phone2=(TextView)view.findViewById(R.id.phone2_Txv);
+//        address2=(TextView)view.findViewById(R.id.address2_Txv);
+//        Cursor cursor=db.getAllData();
+//        cursor.moveToFirst();
+//        while (!cursor.isAfterLast()){
+////            Log.w("personalInformation",cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_name))+"");
+//            name2.setText(Html.fromHtml("<u>"+cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_name))+"</u>"));
+//            phone2.setText(Html.fromHtml("<u>"+cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_phone))+"</u>"));
+//            address2.setText(Html.fromHtml("<u>"+cursor.getString(cursor.getColumnIndex(DBHelper.personalInformation_TABLE_address))+"</u>"));
+//            cursor.moveToNext();
+//        }
 
-        Button btn = (Button)view.findViewById(R.id.personalSet_Btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                final View item= LayoutInflater.from(getContext()).inflate(R.layout.activity_set_personal_information,null);
-
-                //彈出框
-                new AlertDialog.Builder(getContext())
-                        .setTitle("輸入你的個人資料")//標題顯示列
-                        .setView(item)
-                        //確定按鈕
-                        .setPositiveButton("確定輸入", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                EditText nameEdt = (EditText) item.findViewById(R.id.nameEdt);
-                                EditText phoneEdt=(EditText)item.findViewById(R.id.phoneEdt);
-                                EditText addressEdt=(EditText)item.findViewById(R.id.addressEdt);
-                                String name = nameEdt.getText().toString();
-                                String phone = phoneEdt.getText().toString();
-                                String address=addressEdt.getText().toString();
-                                if(TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(address)){
-                                    //無輸入時顯示
-                                    Toast.makeText(getContext(), "資料輸入不完全,請確認資料", Toast.LENGTH_SHORT).show();
-
-                                } else {
-                                    ShowItem showItem=new ShowItem();
-                                    showItem.setP_name(name);
-                                    showItem.setP_phone(phone);
-                                    showItem.setP_address(address);
-//                            showItem.setP_password("");
-//                            showItem.setP_account("");
-//                            showItem.setP_id(0);
-//                            showItem.setP_datetime("");
-                                    db.deleteInformation();
-                                    db.insertPersonalInformation(showItem);
-                                    name2.setText(Html.fromHtml("<u>"+nameEdt.getText().toString()+"</u>"));
-                                    phone2.setText(Html.fromHtml("<u>"+phoneEdt.getText().toString()+"</u>"));
-                                    address2.setText(Html.fromHtml("<u>"+addressEdt.getText().toString()+"</u>"));
-
-                                }
-
-                            }
-                        })
-                        .show();
-
-            }
-        });
+//        Button btn = (Button)view.findViewById(R.id.personalSet_Btn);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                final View item= LayoutInflater.from(getContext()).inflate(R.layout.activity_set_personal_information,null);
+//
+//                //彈出框
+//                new AlertDialog.Builder(getContext())
+//                        .setTitle("輸入你的個人資料")//標題顯示列
+//                        .setView(item)
+//                        //確定按鈕
+//                        .setPositiveButton("確定輸入", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                EditText nameEdt = (EditText) item.findViewById(R.id.nameEdt);
+//                                EditText phoneEdt=(EditText)item.findViewById(R.id.phoneEdt);
+//                                EditText addressEdt=(EditText)item.findViewById(R.id.addressEdt);
+//                                String name = nameEdt.getText().toString();
+//                                String phone = phoneEdt.getText().toString();
+//                                String address=addressEdt.getText().toString();
+//                                if(TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(address)){
+//                                    //無輸入時顯示
+//                                    Toast.makeText(getContext(), "資料輸入不完全,請確認資料", Toast.LENGTH_SHORT).show();
+//
+//                                } else {
+//                                    ShowItem showItem=new ShowItem();
+//                                    showItem.setP_name(name);
+//                                    showItem.setP_phone(phone);
+//                                    showItem.setP_address(address);
+////                            showItem.setP_password("");
+////                            showItem.setP_account("");
+////                            showItem.setP_id(0);
+////                            showItem.setP_datetime("");
+//                                    db.deleteInformation();
+//                                    db.insertPersonalInformation(showItem);
+//                                    name2.setText(Html.fromHtml("<u>"+nameEdt.getText().toString()+"</u>"));
+//                                    phone2.setText(Html.fromHtml("<u>"+phoneEdt.getText().toString()+"</u>"));
+//                                    address2.setText(Html.fromHtml("<u>"+addressEdt.getText().toString()+"</u>"));
+//
+//                                }
+//
+//                            }
+//                        })
+//                        .show();
+//
+//            }
+//        });
 
 
     }

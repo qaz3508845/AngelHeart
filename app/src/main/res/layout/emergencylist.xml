@@ -20,10 +20,11 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/emergencyImg"
         android:text="TextView"
-        android:textSize="16sp"
+        android:textSize="25dp"
         android:textStyle="bold" />
 
     <TextView
+        android:textSize="20dp"
         android:id="@+id/emergencyNickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,33 +33,46 @@
         android:text="TextView" />
 
     <Button
-        android:background="@drawable/button_border"
         android:id="@+id/newsBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/deleteBtn"
+        android:layout_alignBottom="@+id/deleteBtn"
         android:layout_toStartOf="@+id/telephoneBtn"
-        android:text="訊息" />
+        android:background="@drawable/circular"
+        android:shadowColor="#000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:text="訊息"
+        android:textColor="#66009d"
+        android:textSize="20dp" />
 
     <Button
-        android:background="@drawable/button_border"
         android:id="@+id/telephoneBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/deleteBtn"
+        android:layout_alignBottom="@+id/deleteBtn"
         android:layout_toStartOf="@+id/deleteBtn"
-        android:text="撥打" />
+        android:background="@drawable/circular"
+        android:text="撥打"
+        android:textColor="#556b2f"
+        android:textSize="20dp" />
 
     <Button
-        android:background="@drawable/button_border"
         android:id="@+id/deleteBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/telephoneName"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="刪除" />
+        android:background="@drawable/circular"
+        android:text="刪除"
+        android:textColor="#f2746b"
+        android:textSize="20dp" />
 
     <TextView
+        android:textSize="20dp"
         android:id="@+id/telephoneName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

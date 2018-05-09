@@ -49,6 +49,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 
+//此fragment改為設定頁面
+
 public class mapViewFragment extends Fragment  {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -100,17 +102,6 @@ public class mapViewFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map_view, container, false);
 
-        //对View中控件的操作方法
-        Button btn = (Button)view.findViewById(R.id.maps_btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(getContext(),MapsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         return view;
     }

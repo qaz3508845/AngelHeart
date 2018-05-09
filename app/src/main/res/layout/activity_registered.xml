@@ -9,6 +9,11 @@
 
 
     <Button
+        android:textColor="#f2746b"
+        android:shadowColor="#000"
+        android:shadowRadius="1"
+        android:shadowDx="1"
+        android:shadowDy="1"
         android:id="@+id/registered_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
@@ -20,8 +25,7 @@
         android:background="@drawable/button_border"
         android:onClick="registeredBtnClick"
         android:text="註冊"
-        android:textColor="#000000"
-        android:textSize="20dp" />
+        android:textSize="30dp" />
     <TextView
         android:textSize="20dp"
         android:id="@+id/name_Txv"
@@ -114,6 +118,11 @@
         android:inputType="phone" />
 
     <Button
+        android:textColor="#f2746b"
+        android:shadowColor="#000"
+        android:shadowRadius="1"
+        android:shadowDx="1"
+        android:shadowDy="1"
         android:id="@+id/login_Btn"
         android:layout_width="189dp"
         android:layout_height="50dp"
@@ -127,8 +136,7 @@
 
         android:onClick="loginBtnOnClick"
         android:text="回到登入"
-        android:textColor="#000000"
-        android:textSize="20dp" />
+        android:textSize="30dp" />
 
     <TextView
         android:textSize="20dp"
